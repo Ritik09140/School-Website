@@ -63,3 +63,13 @@ img:hover {
 html {
   scroll-behavior: smooth;
 }
+.intro-image {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.intro-image img {
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
