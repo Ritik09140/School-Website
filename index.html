@@ -11,7 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
   <style>
     :root {
       --blue-deep: #0a1628;
@@ -218,7 +218,8 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: fadeUp 1s ease 1.8s both;
-      margin-top: 80px; /* Added to push name down below the logo */
+      margin-top: 80px;
+      /* Added to push name down below the logo */
       margin-bottom: 10px;
       max-width: 700px;
     }
@@ -1263,7 +1264,7 @@
       padding: 6px;
       background: linear-gradient(135deg, rgba(26, 71, 204, 0.3), rgba(10, 22, 40, 0.8));
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     }
 
     .management-card:hover .management-img-wrapper {
@@ -2281,132 +2282,319 @@
       background: var(--blue-bright);
     }
 
-  /* ── ABOUT SECTION IMAGE ANIMATIONS ── */
-  @keyframes floatImg {
-    0%   { transform: translateY(0px); }
-    50%  { transform: translateY(-14px); }
-    100% { transform: translateY(0px); }
-  }
-  @keyframes rotateBorder {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+    /* ── ABOUT SECTION IMAGE ANIMATIONS ── */
+    @keyframes floatImg {
+      0% {
+        transform: translateY(0px);
+      }
 
-  /* ───── FINAL HEADER ADJUSTMENT (NO CUTOFF) ───── */
-  .hero-full {
-    position: relative;
-    height: 100vh;
-    min-height: 800px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end; /* Align items towards the bottom */
-    text-align: center;
-    background: #0a1628 url('images/new.jpg') center center/contain no-repeat; /* Fit image correctly without stretching */
-    padding: 100px 20px 20px; /* Reduce bottom padding */
-  }
-  .hero-full-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(10,22,40,0.0) 0%, rgba(10,22,40,0.1) 50%, rgba(10,22,40,0.7) 100%);
-    z-index: 2;
-  }
-  .hero-full-content {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: auto; /* Push to bottom naturally */
-    padding-bottom: 15px; /* Push buttons much lower */
-    animation: fadeInUp 1s ease-out;
-  }
-  .hero-full-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(35px, 7vw, 85px);
-    font-weight: 900;
-    line-height: 1;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 50%, #ffffff 80%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-  }
-  .hero-full-title span {
-    color: var(--gold-light);
-    display: block;
-    font-size: 0.6em;
-    letter-spacing: 3px;
-    margin-top: 15px;
-  }
-  .hero-full-btns {
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    margin-top: 150px; /* Much lower as requested */
-  }
-  
-  /* Robust Info Strip (No Cutoff) */
-  .info-strip {
-    background: var(--blue-mid);
-    padding: 50px 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    width: 100%;
-    border-top: 4px solid var(--blue-bright);
-    box-shadow: 0 -20px 40px rgba(0,0,0,0.3);
-  }
-  .info-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--white);
-    min-width: 250px;
-  }
-  .info-icon {
-    font-size: 24px;
-    color: var(--gold-light);
-    background: rgba(255,255,255,0.05);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  }
-  .info-text h4 {
-    font-size: 13px;
-    opacity: 0.8;
-    margin-bottom: 4px;
-    color: var(--blue-glow);
-  }
-  .info-text p {
-    font-weight: 700;
-    font-size: 17px;
-  }
+      50% {
+        transform: translateY(-14px);
+      }
 
-  @media (max-width: 768px) {
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes rotateBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* ───── FINAL HEADER ADJUSTMENT (NO CUTOFF) ───── */
     .hero-full {
-      padding-top: 150px;
-      background-attachment: scroll; /* Better for mobile */
+      position: relative;
+      height: 100vh;
+      min-height: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      /* Align items towards the bottom */
+      text-align: center;
+      background: #0a1628 url('images/new.jpg') center center/contain no-repeat;
+      /* Fit image correctly without stretching */
+      padding: 100px 20px 20px;
+      /* Reduce bottom padding */
     }
+
+    .hero-full-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10, 22, 40, 0.0) 0%, rgba(10, 22, 40, 0.1) 50%, rgba(10, 22, 40, 0.7) 100%);
+      z-index: 2;
+    }
+
+    .hero-full-content {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: auto;
+      /* Push to bottom naturally */
+      padding-bottom: 15px;
+      /* Push buttons much lower */
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-full-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(35px, 7vw, 85px);
+      font-weight: 900;
+      line-height: 1;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 50%, #ffffff 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    }
+
+    .hero-full-title span {
+      color: var(--gold-light);
+      display: block;
+      font-size: 0.6em;
+      letter-spacing: 3px;
+      margin-top: 15px;
+    }
+
+    .hero-full-btns {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 150px;
+      /* Much lower as requested */
+    }
+
+    /* Robust Info Strip (No Cutoff) */
     .info-strip {
-      padding: 40px 20px;
-      gap: 30px;
+      background: var(--blue-mid);
+      padding: 50px 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      width: 100%;
+      border-top: 4px solid var(--blue-bright);
+      box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
     }
+
     .info-item {
-      min-width: 100%;
-      background: rgba(255,255,255,0.03);
-      padding: 15px;
-      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--white);
+      min-width: 250px;
     }
-  }
+
+    .info-icon {
+      font-size: 24px;
+      color: var(--gold-light);
+      background: rgba(255, 255, 255, 0.05);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .info-text h4 {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-bottom: 4px;
+      color: var(--blue-glow);
+    }
+
+    .info-text p {
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-full {
+        padding-top: 150px;
+        background-attachment: scroll;
+        /* Better for mobile */
+      }
+
+      .info-strip {
+        padding: 40px 20px;
+        gap: 30px;
+      }
+
+      .info-item {
+        min-width: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 15px;
+        border-radius: 12px;
+      }
+    }
+    /* ───── STUDENT ACHIEVEMENTS PREMIUM ───── */
+    #student-achievements {
+      background: radial-gradient(circle at top right, #0d2550 0%, #0a1628 100%);
+      padding: 100px 5%;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .achievements-row {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 60px 10px 80px;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
+      scroll-snap-type: x mandatory;
+      justify-content: flex-start;
+    }
+
+    .achievements-row::-webkit-scrollbar {
+      display: none;
+      /* Chrome/Safari */
+    }
+
+    .achievement-card {
+      min-width: 320px;
+      flex: 0 0 320px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 50px 25px 40px;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      scroll-snap-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-15px);
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--gold-light);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 25px rgba(252, 211, 77, 0.15);
+    }
+
+    .achievement-badge {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold), #b8860b);
+      color: #000;
+      padding: 8px 22px;
+      border-radius: 25px;
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      box-shadow: 0 8px 20px rgba(184, 134, 11, 0.5);
+      z-index: 5;
+    }
+
+    .achievement-img-wrapper {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 30px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--gold-light), transparent, var(--gold-light));
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .achievement-card:hover .achievement-img-wrapper {
+      transform: scale(1.05);
+    }
+
+    .achievement-img-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--blue-deep);
+      background: #1a2a44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .achievement-img-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .achievement-name {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.5px;
+    }
+
+    .achievement-title {
+      color: var(--gold-light);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .achievement-detail {
+      color: var(--gray);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .achievement-year {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 15px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      border-radius: 15px;
+      color: var(--blue-glow);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .achievements-row {
+        justify-content: flex-start;
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 20px;
+      }
+
+      .achievement-card {
+        min-width: 290px;
+        flex: 0 0 290px;
+      }
+    }
+
   </style>
+
 </head>
 
 <body>
@@ -2458,7 +2646,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#courses">Courses</a></li>
       <li><a href="#management">Management Team</a></li>
-      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#student-achievements">Achievements</a></li>
       <li><a href="#results">Results</a></li>
       <li><a href="#jee-neet">JEE/NEET</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -2475,7 +2663,7 @@
       <li><a href="#about" onclick="toggleMenu()">About</a></li>
       <li><a href="#courses" onclick="toggleMenu()">Courses</a></li>
       <li><a href="#management" onclick="toggleMenu()">Management Team</a></li>
-      <li><a href="#faculty" onclick="toggleMenu()">Faculty</a></li>
+      <li><a href="#student-achievements" onclick="toggleMenu()">Achievements</a></li>
       <li><a href="#results" onclick="toggleMenu()">Results</a></li>
       <li><a href="#jee-neet" onclick="toggleMenu()">JEE / NEET</a></li>
       <li><a href="#gallery" onclick="toggleMenu()">Gallery</a></li>
@@ -2492,8 +2680,11 @@
     <div class="hero-full-content">
       <!-- Big title removed as requested for full photo visibility -->
       <div class="hero-full-btns">
-        <a href="#admission" class="btn-primary" style="padding: 18px 45px; text-decoration: none; border-radius: 50px;">🎓 Admission Open</a>
-        <a href="https://wa.me/919428242460" target="_blank" class="btn-secondary" style="padding: 18px 45px; text-decoration: none; border-radius: 50px; background: rgba(255,255,255,0.1);">📞 Contact Us</a>
+        <a href="#admission" class="btn-primary"
+          style="padding: 18px 45px; text-decoration: none; border-radius: 50px;">🎓 Admission Open</a>
+        <a href="https://wa.me/919428242460" target="_blank" class="btn-secondary"
+          style="padding: 18px 45px; text-decoration: none; border-radius: 50px; background: rgba(255,255,255,0.1);">📞
+          Contact Us</a>
       </div>
     </div>
   </section>
@@ -2633,20 +2824,32 @@
         <div class="about-img-main" style="position:relative; overflow:visible; padding:18px;">
 
           <!-- Premium outer border -->
-          <div style="position:absolute; inset:0; border-radius:18px; background:linear-gradient(135deg, var(--gold-light) 0%, rgba(212,175,55,0.2) 50%, var(--gold-light) 100%); padding:2px; z-index:0;">
+          <div
+            style="position:absolute; inset:0; border-radius:18px; background:linear-gradient(135deg, var(--gold-light) 0%, rgba(212,175,55,0.2) 50%, var(--gold-light) 100%); padding:2px; z-index:0;">
             <div style="width:100%; height:100%; background:#0a1628; border-radius:16px;"></div>
           </div>
           <!-- Inner dashed border -->
-          <div style="position:absolute; inset:10px; border:1px dashed rgba(212,175,55,0.4); border-radius:10px; z-index:2; pointer-events:none;"></div>
+          <div
+            style="position:absolute; inset:10px; border:1px dashed rgba(212,175,55,0.4); border-radius:10px; z-index:2; pointer-events:none;">
+          </div>
 
           <!-- 4 Corner Ornaments -->
-          <div style="position:absolute; top:4px; left:4px; width:30px; height:30px; border-top:3px solid var(--gold-light); border-left:3px solid var(--gold-light); border-radius:3px 0 0 0; z-index:3;"></div>
-          <div style="position:absolute; top:4px; right:4px; width:30px; height:30px; border-top:3px solid var(--gold-light); border-right:3px solid var(--gold-light); border-radius:0 3px 0 0; z-index:3;"></div>
-          <div style="position:absolute; bottom:4px; left:4px; width:30px; height:30px; border-bottom:3px solid var(--gold-light); border-left:3px solid var(--gold-light); border-radius:0 0 0 3px; z-index:3;"></div>
-          <div style="position:absolute; bottom:4px; right:4px; width:30px; height:30px; border-bottom:3px solid var(--gold-light); border-right:3px solid var(--gold-light); border-radius:0 0 3px 0; z-index:3;"></div>
+          <div
+            style="position:absolute; top:4px; left:4px; width:30px; height:30px; border-top:3px solid var(--gold-light); border-left:3px solid var(--gold-light); border-radius:3px 0 0 0; z-index:3;">
+          </div>
+          <div
+            style="position:absolute; top:4px; right:4px; width:30px; height:30px; border-top:3px solid var(--gold-light); border-right:3px solid var(--gold-light); border-radius:0 3px 0 0; z-index:3;">
+          </div>
+          <div
+            style="position:absolute; bottom:4px; left:4px; width:30px; height:30px; border-bottom:3px solid var(--gold-light); border-left:3px solid var(--gold-light); border-radius:0 0 0 3px; z-index:3;">
+          </div>
+          <div
+            style="position:absolute; bottom:4px; right:4px; width:30px; height:30px; border-bottom:3px solid var(--gold-light); border-right:3px solid var(--gold-light); border-radius:0 0 3px 0; z-index:3;">
+          </div>
 
           <!-- Image -->
-          <img src="images/bilding.jpg" alt="School Building" style="position:relative; z-index:1; width:100%; border-radius:12px; display:block; box-shadow:0 25px 55px rgba(0,0,0,0.7); object-fit:cover;">
+          <img src="images/bilding.jpg" alt="School Building"
+            style="position:relative; z-index:1; width:100%; border-radius:12px; display:block; box-shadow:0 25px 55px rgba(0,0,0,0.7); object-fit:cover;">
         </div>
         <div class="about-stats-mini">
           <div class="big">20+</div>
@@ -2660,13 +2863,16 @@
 
         <p style="color:rgba(255,255,255,0.95); line-height:1.9; font-size:17px; margin-bottom:18px;">
           🏫 <strong style="color:var(--gold-light);">The New Achiever Pre-Science School, Limdi</strong><br>
-          KG થી Std. 12 Science સુધી ગુણવત્તાસભર શિક્ષણ આપતી પ્રતિષ્ઠિત સંસ્થા, જ્યાં <strong style="color:var(--blue-glow);">Gujarati અને English</strong> બંને Mediumમાં ભણતર ઉપલબ્ધ છે અને વિદ્યાર્થીઓના સર્વાંગી વિકાસ પર ખાસ ધ્યાન આપવામાં આવે છે.
+          KG થી Std. 12 Science સુધી ગુણવત્તાસભર શિક્ષણ આપતી પ્રતિષ્ઠિત સંસ્થા, જ્યાં <strong
+            style="color:var(--blue-glow);">Gujarati અને English</strong> બંને Mediumમાં ભણતર ઉપલબ્ધ છે અને
+          વિદ્યાર્થીઓના સર્વાંગી વિકાસ પર ખાસ ધ્યાન આપવામાં આવે છે.
         </p>
         <p style="color:rgba(255,255,255,0.88); line-height:1.9; font-size:16px; margin-bottom:10px;">
           🔬 આધુનિક Science Lab, Smart Classes અને અનુભવી શિક્ષકમંડળ દ્વારા મજબૂત શૈક્ષણિક પાયો બનાવવામાં આવે છે.
         </p>
         <p style="color:rgba(255,255,255,0.88); line-height:1.9; font-size:16px; margin-bottom:10px;">
-          🎯 Board Exams તથા JEE / NEET જેવી Competitive Exams માટે વિશેષ માર્ગદર્શન સાથે સતત ઉત્તમ પરિણામો પ્રાપ્ત થાય છે.
+          🎯 Board Exams તથા JEE / NEET જેવી Competitive Exams માટે વિશેષ માર્ગદર્શન સાથે સતત ઉત્તમ પરિણામો પ્રાપ્ત થાય
+          છે.
         </p>
         <p style="color:rgba(255,255,255,0.88); line-height:1.9; font-size:16px; margin-bottom:24px;">
           🌱 અમે શિક્ષણ સાથે સંસ્કાર, આત્મવિશ્વાસ અને ઉજ્જવળ ભવિષ્ય માટે વિદ્યાર્થીઓને તૈયાર કરીએ છીએ.
@@ -2674,16 +2880,23 @@
 
         <!-- Feature Checkmarks -->
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; margin-bottom:28px;">
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 🎓 KG થી 12 Science</div>
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 🌐 Gujarati & English Medium</div>
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 🧪 આધુનિક Lab & Smart Classes</div>
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 👨‍🏫 અનુભવી શિક્ષકમંડળ</div>
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 📈 ઉત્તમ પરિણામો</div>
-          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span style="color:var(--gold-light);">✔</span> 🚀 JEE / NEET તૈયારી</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 🎓 KG થી 12 Science</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 🌐 Gujarati & English Medium</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 🧪 આધુનિક Lab & Smart Classes</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 👨‍🏫 અનુભવી શિક્ષકમંડળ</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 📈 ઉત્તમ પરિણામો</div>
+          <div style="color:rgba(255,255,255,0.9); font-size:14px; display:flex; align-items:center; gap:8px;"><span
+              style="color:var(--gold-light);">✔</span> 🚀 JEE / NEET તૈયારી</div>
         </div>
 
         <!-- Tagline -->
-        <div style="background:linear-gradient(135deg,rgba(212,175,55,0.1),rgba(30,80,160,0.15)); border:1px solid rgba(212,175,55,0.3); border-radius:12px; padding:16px 22px; font-style:italic; color:var(--gold-light); font-size:16px; font-family:'Playfair Display',serif;">
+        <div
+          style="background:linear-gradient(135deg,rgba(212,175,55,0.1),rgba(30,80,160,0.15)); border:1px solid rgba(212,175,55,0.3); border-radius:12px; padding:16px 22px; font-style:italic; color:var(--gold-light); font-size:16px; font-family:'Playfair Display',serif;">
           💎 <em>"શિક્ષણ સાથે સંસ્કાર — સફળતા તરફનો માર્ગ"</em>
         </div>
       </div>
@@ -2698,49 +2911,77 @@
         <div class="special-img-frame" style="position:relative; padding:20px;">
 
           <!-- Outer royal border -->
-          <div style="position:absolute; inset:0; border:2px solid rgba(212,175,55,0.5); border-radius:16px; z-index:0;"></div>
+          <div
+            style="position:absolute; inset:0; border:2px solid rgba(212,175,55,0.5); border-radius:16px; z-index:0;">
+          </div>
           <!-- Inner subtle border -->
-          <div style="position:absolute; inset:10px; border:1px dashed rgba(212,175,55,0.3); border-radius:10px; z-index:0;"></div>
+          <div
+            style="position:absolute; inset:10px; border:1px dashed rgba(212,175,55,0.3); border-radius:10px; z-index:0;">
+          </div>
 
           <!-- ⭐ STAR CORNERS -->
           <!-- Top-left star -->
-          <div style="position:absolute; top:-14px; left:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">⭐</div>
+          <div
+            style="position:absolute; top:-14px; left:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">
+            ⭐</div>
           <!-- Top-right star -->
-          <div style="position:absolute; top:-14px; right:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">⭐</div>
+          <div
+            style="position:absolute; top:-14px; right:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">
+            ⭐</div>
           <!-- Bottom-left star -->
-          <div style="position:absolute; bottom:-14px; left:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">⭐</div>
+          <div
+            style="position:absolute; bottom:-14px; left:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">
+            ⭐</div>
           <!-- Bottom-right star -->
-          <div style="position:absolute; bottom:-14px; right:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">⭐</div>
+          <div
+            style="position:absolute; bottom:-14px; right:-14px; width:28px; height:28px; background:var(--gold-light); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; z-index:4; box-shadow:0 0 12px rgba(212,175,55,0.8);">
+            ⭐</div>
 
           <!-- Top-center gold bar -->
-          <div style="position:absolute; top:-2px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg, transparent, var(--gold-light), transparent); height:3px; width:60%; z-index:3;"></div>
+          <div
+            style="position:absolute; top:-2px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg, transparent, var(--gold-light), transparent); height:3px; width:60%; z-index:3;">
+          </div>
           <!-- Bottom-center gold bar -->
-          <div style="position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg, transparent, var(--gold-light), transparent); height:3px; width:60%; z-index:3;"></div>
+          <div
+            style="position:absolute; bottom:-2px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg, transparent, var(--gold-light), transparent); height:3px; width:60%; z-index:3;">
+          </div>
 
           <!-- The Image -->
-          <img src="images/archive.jpg" alt="Meeting with PM Narendra Modi" style="position:relative; z-index:1; width:100%; border-radius:10px; display:block; box-shadow: 0 25px 55px rgba(0,0,0,0.6);">
+          <img src="images/archive.jpg" alt="Meeting with PM Narendra Modi"
+            style="position:relative; z-index:1; width:100%; border-radius:10px; display:block; box-shadow: 0 25px 55px rgba(0,0,0,0.6);">
 
           <!-- Special Recognition Badge -->
-          <div class="special-img-badge" style="background: linear-gradient(135deg, #b8860b, var(--gold-light)); color:#000; font-weight:800; letter-spacing:1px;">✦ Special Recognition</div>
+          <div class="special-img-badge"
+            style="background: linear-gradient(135deg, #b8860b, var(--gold-light)); color:#000; font-weight:800; letter-spacing:1px;">
+            ✦ Special Recognition</div>
         </div>
         <div class="special-corner tl"></div>
         <div class="special-corner br"></div>
       </div>
       <div class="reveal-right">
         <div class="special-tag">🏅 Presidential Honor — A Moment of National Pride</div>
-        
+
         <!-- Proud of School heading in handwriting style -->
-        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(30px, 4vw, 48px); color:#fff; line-height:1.25; margin-bottom:20px; font-weight:700; font-style:italic; letter-spacing:1px;">
+        <h2
+          style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(30px, 4vw, 48px); color:#fff; line-height:1.25; margin-bottom:20px; font-weight:700; font-style:italic; letter-spacing:1px;">
           Proud of Our <span style="color:var(--gold-light); font-style:italic;">School</span> 🇮🇳
         </h2>
-        <p style="font-family: 'Georgia', serif; font-size:17px; color:rgba(255,255,255,0.95); line-height:1.9; margin-bottom:18px;">
-          In a truly <strong>historic and unforgettable moment</strong>, the students and faculty of <strong>The New Achiever Pre-Science School, Limdi</strong> were blessed with a personal audience with the <strong style="color:var(--gold-light);">Honourable Prime Minister of India, Shri Narendra Modi Ji.</strong>
+        <p
+          style="font-family: 'Georgia', serif; font-size:17px; color:rgba(255,255,255,0.95); line-height:1.9; margin-bottom:18px;">
+          In a truly <strong>historic and unforgettable moment</strong>, the students and faculty of <strong>The New
+            Achiever Pre-Science School, Limdi</strong> were blessed with a personal audience with the <strong
+            style="color:var(--gold-light);">Honourable Prime Minister of India, Shri Narendra Modi Ji.</strong>
         </p>
-        <p style="font-family: 'Georgia', serif; font-size:16px; color:rgba(255,255,255,0.88); line-height:1.9; margin-bottom:18px;">
-          This extraordinary recognition stands as a testament to the school's dedication to academic excellence, science education, and the holistic growth of every student in rural Gujarat. To be acknowledged at the highest national level fills every heart in our school family with immense pride and joy.
+        <p
+          style="font-family: 'Georgia', serif; font-size:16px; color:rgba(255,255,255,0.88); line-height:1.9; margin-bottom:18px;">
+          This extraordinary recognition stands as a testament to the school's dedication to academic excellence,
+          science education, and the holistic growth of every student in rural Gujarat. To be acknowledged at the
+          highest national level fills every heart in our school family with immense pride and joy.
         </p>
-        <p style="font-family: 'Georgia', serif; font-size:15px; color:rgba(255,255,255,0.75); line-height:1.85; font-style:italic; margin-bottom:28px; border-left:3px solid var(--gold-light); padding-left:16px;">
-          "We do not just teach science — we build the future of our nation, one student at a time. This honor from the Prime Minister is not ours alone — it belongs to every child who dared to dream."
+        <p
+          style="font-family: 'Georgia', serif; font-size:15px; color:rgba(255,255,255,0.75); line-height:1.85; font-style:italic; margin-bottom:28px; border-left:3px solid var(--gold-light); padding-left:16px;">
+          "We do not just teach science — we build the future of our nation, one student at a time. This honor from the
+          Prime Minister is not ours alone — it belongs to every child who dared to dream."
         </p>
         <div class="special-highlights">
           <div class="special-hl">🏆 Honored by the Prime Minister of India for Academic Excellence</div>
@@ -2760,12 +3001,13 @@
       <p class="section-sub reveal" style="margin: 0 auto;">Meet the dedicated leaders guiding our institution</p>
     </div>
     <div class="management-grid">
-      
+
       <!-- Member 1 -->
       <div class="management-card reveal" style="transition-delay:0.1s;">
         <div class="management-img">
           <div class="management-img-wrapper">
-            <img src="images/Trustee.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;" onerror="this.src='images/school.jpg'">
+            <img src="images/Trustee.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;"
+              onerror="this.src='images/school.jpg'">
           </div>
         </div>
         <div class="management-info">
@@ -2778,7 +3020,8 @@
       <div class="management-card reveal" style="transition-delay:0.2s;">
         <div class="management-img">
           <div class="management-img-wrapper">
-            <img src="images/pintu.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;" onerror="this.src='images/school.jpg'">
+            <img src="images/pintu.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;"
+              onerror="this.src='images/school.jpg'">
           </div>
         </div>
         <div class="management-info">
@@ -2791,7 +3034,9 @@
       <div class="management-card reveal" style="transition-delay:0.3s;">
         <div class="management-img">
           <div class="management-img-wrapper" style="background: white;">
-            <img src="images/principal.jpg" alt="Campus Director" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
+            <img src="images/principal.jpg" alt="Campus Director"
+              style="object-fit: contain; object-position: center; background-color: white;"
+              onerror="this.src='images/school.jpg'">
           </div>
         </div>
         <div class="management-info">
@@ -2804,7 +3049,9 @@
       <div class="management-card reveal" style="transition-delay:0.4s;">
         <div class="management-img">
           <div class="management-img-wrapper" style="background: white;">
-            <img src="images/ss.jpg" alt="Principal" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
+            <img src="images/ss.jpg" alt="Principal"
+              style="object-fit: contain; object-position: center; background-color: white;"
+              onerror="this.src='images/school.jpg'">
           </div>
         </div>
         <div class="management-info">
@@ -2817,7 +3064,9 @@
       <div class="management-card reveal" style="transition-delay:0.5s;">
         <div class="management-img">
           <div class="management-img-wrapper" style="background: white;">
-            <img src="images/shilpa.jpg" alt="Principal" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
+            <img src="images/shilpa.jpg" alt="Principal"
+              style="object-fit: contain; object-position: center; background-color: white;"
+              onerror="this.src='images/school.jpg'">
           </div>
         </div>
         <div class="management-info">
@@ -2829,39 +3078,89 @@
     </div>
   </section>
 
-  <!-- FACULTY -->
-  <section id="faculty">
+  <!-- STUDENT ACHIEVEMENTS PREMIUM (REPLACED FACULTY) -->
+  <section id="student-achievements">
     <div style="text-align:center; margin-bottom:0;">
-      <div class="section-tag reveal">👨‍🏫 Our Team</div>
-      <h2 class="section-title reveal">અમારા <span>Faculty</span></h2>
-      <p class="section-sub reveal" style="margin: 0 auto;">અનુભવી અને Dedicated Teachers — students ની સફળતા માટે સદૈવ
-        પ્રતિબદ્ધ</p>
+      <div class="section-tag reveal">Future Doctors & Top Achievers 🌟</div>
+      <h2 class="section-title reveal">Success <span>Stories</span></h2>
+      <p class="section-sub reveal" style="margin: 0 auto; max-width: 800px;">
+        We proudly celebrate our students who achieved excellence and secured admissions in top institutions like MBBS, NEET, and other prestigious fields.
+      </p>
     </div>
-    <div class="faculty-grid" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px;">
-      <div class="faculty-card reveal" style="transition-delay:0.05s; max-width: 300px; width: 100%;">
-        <div class="faculty-img">
-          <div class="faculty-placeholder">👨‍🏫</div>
+
+    <div class="achievements-row reveal">
+      
+      <!-- Student 1 -->
+      <div class="achievement-card">
+        <div class="achievement-badge">MBBS</div>
+        <div class="achievement-img-wrapper">
+          <div class="achievement-img-inner">
+            <img src="images/student1.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Felix'">
+          </div>
         </div>
-        <div class="faculty-info">
-          <div class="faculty-name">Mayank Sir</div>
-          <div class="faculty-sub">Mathematics • Physics</div>
-          <div class="faculty-exp">Expert Faculty</div>
-        </div>
+        <div class="achievement-name">Aditya Verma</div>
+        <div class="achievement-title">MBBS Selected</div>
+        <div class="achievement-detail">Secured admission in <strong>AIIMS Delhi</strong> with top rank in NEET.</div>
+        <div class="achievement-year">Class of 2024</div>
       </div>
-      <div class="faculty-card reveal" style="transition-delay:0.1s; max-width: 300px; width: 100%;">
-        <div class="faculty-img">
-          <div class="faculty-placeholder">👩‍🏫</div>
+
+      <!-- Student 2 -->
+      <div class="achievement-card">
+        <div class="achievement-badge">NEET</div>
+        <div class="achievement-img-wrapper">
+          <div class="achievement-img-inner">
+            <img src="images/student2.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka'">
+          </div>
         </div>
-        <div class="faculty-info">
-          <div class="faculty-name">Kinjal Mam</div>
-          <div class="faculty-sub">Biology</div>
-          <div class="faculty-exp">Expert Faculty</div>
-        </div>
+        <div class="achievement-name">Priya Sharma</div>
+        <div class="achievement-title">NEET Qualified</div>
+        <div class="achievement-detail">Scored 685/720 in NEET. Selected for <strong>GMC Ahmedabad</strong>.</div>
+        <div class="achievement-year">Class of 2024</div>
       </div>
+
+      <!-- Student 3 -->
+      <div class="achievement-card">
+        <div class="achievement-badge">TOPPER</div>
+        <div class="achievement-img-wrapper">
+          <div class="achievement-img-inner">
+            <img src="images/student3.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Buster'">
+          </div>
+        </div>
+        <div class="achievement-name">Rahul Patel</div>
+        <div class="achievement-title">95% Board Topper</div>
+        <div class="achievement-detail">District Topper in 12th Science Board Exams with A1 Grade.</div>
+        <div class="achievement-year">Class of 2024</div>
+      </div>
+
+      <!-- Student 4 -->
+      <div class="achievement-card">
+        <div class="achievement-badge">MBBS</div>
+        <div class="achievement-img-wrapper">
+          <div class="achievement-img-inner">
+            <img src="images/student4.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Garrett'">
+          </div>
+        </div>
+        <div class="achievement-name">Sneha Gupta</div>
+        <div class="achievement-title">MBBS Selected</div>
+        <div class="achievement-detail">Secured Government Seat in <strong>BJ Medical College</strong>.</div>
+        <div class="achievement-year">Class of 2023</div>
+      </div>
+
+      <!-- Student 5 -->
+      <div class="achievement-card">
+        <div class="achievement-badge">NEET</div>
+        <div class="achievement-img-wrapper">
+          <div class="achievement-img-inner">
+            <img src="images/student5.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Heidi'">
+          </div>
+        </div>
+        <div class="achievement-name">Dev Trivedi</div>
+        <div class="achievement-title">NEET Qualified</div>
+        <div class="achievement-detail">Outstanding performance in NEET with 640+ Score.</div>
+        <div class="achievement-year">Class of 2024</div>
+      </div>
+
     </div>
-    <p style="text-align:center; color:var(--gray); margin-top:30px; font-size:14px; font-style:italic;">
-      📸 Upload teacher photos to replace placeholders
-    </p>
   </section>
 
   <!-- RESULTS -->
@@ -3008,28 +3307,32 @@
         <img src="images/bilding.jpg" alt="School Building">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 2nd Item -->
       <div class="gallery-item reveal" style="transition-delay:0.05s" onclick="openLightbox(this)">
         <img src="images/new.jpg" alt="School News">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- Added Item -->
       <div class="gallery-item reveal" style="transition-delay:0.08s" onclick="openLightbox(this)">
         <img src="images/news.jpg" alt="More School News">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 3rd Item -->
       <div class="gallery-item reveal" style="transition-delay:0.1s" onclick="openLightbox(this)">
         <img src="images/prime.jpg" alt="Prime Visit">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 4th Item: Special Celebration Item -->
-      <div class="gallery-item reveal" style="transition-delay:0.15s; grid-column: span 2; border: 2px solid var(--gold-light); box-shadow: 0 0 20px rgba(212,175,55,0.3);" onclick="openLightbox(this)">
-        <div style="position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, var(--gold-light), #b8860b); color: #000; padding: 6px 16px; border-radius: 24px; font-weight: bold; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 14px; letter-spacing: 1px;">🎉 CELEBRATION</div>
+      <div class="gallery-item reveal"
+        style="transition-delay:0.15s; grid-column: span 2; border: 2px solid var(--gold-light); box-shadow: 0 0 20px rgba(212,175,55,0.3);"
+        onclick="openLightbox(this)">
+        <div
+          style="position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, var(--gold-light), #b8860b); color: #000; padding: 6px 16px; border-radius: 24px; font-weight: bold; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 14px; letter-spacing: 1px;">
+          🎉 CELEBRATION</div>
         <img src="images/congratulation.jpg" alt="Congratulations">
         <div class="gallery-hover">🔍</div>
       </div>
@@ -3039,19 +3342,19 @@
         <img src="images/all.jpg" alt="All Events">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 6th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.25s" onclick="openLightbox(this)">
         <img src="images/modi.jpg" alt="National Recognition">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 7th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.3s" onclick="openLightbox(this)">
         <img src="images/pre-science.jpg" alt="School Activities">
         <div class="gallery-hover">🔍</div>
       </div>
-      
+
       <!-- 8th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.35s" onclick="openLightbox(this)">
         <img src="images/school.jpg" alt="School Logo">
@@ -3180,7 +3483,9 @@
           <div class="contact-icon">📍</div>
           <div>
             <div class="contact-label">Address</div>
-            <div class="contact-value"><a href="https://maps.app.goo.gl/UoeKWKasdCFwSSTbA" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--gray);">The New Achiever Pre-Science School,<br>Limmdi gujrat, dahod, jhalod limdi godhra road</a></div>
+            <div class="contact-value"><a href="https://maps.app.goo.gl/UoeKWKasdCFwSSTbA" target="_blank"
+                style="color: inherit; text-decoration: none; border-bottom: 1px dashed var(--gray);">The New Achiever
+                Pre-Science School,<br>Limmdi gujrat, dahod, jhalod limdi godhra road</a></div>
           </div>
         </div>
         <div class="contact-card reveal" style="transition-delay:0.3s">
@@ -3210,8 +3515,10 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-icon" style="border-radius: 50%; overflow: hidden; border: 2px solid var(--blue-glow); display: flex; align-items: center; justify-content: center; background: #fff;">
-            <img src="images/school.jpg" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; animation: rotateLogo 8s linear infinite;">
+          <div class="footer-logo-icon"
+            style="border-radius: 50%; overflow: hidden; border: 2px solid var(--blue-glow); display: flex; align-items: center; justify-content: center; background: #fff;">
+            <img src="images/school.jpg" alt="Logo"
+              style="width: 100%; height: 100%; object-fit: cover; animation: rotateLogo 8s linear infinite;">
           </div>
           <div>
             <div style="font-family:Rajdhani; font-size:16px; font-weight:700">THE NEW ACHIEVER</div>
