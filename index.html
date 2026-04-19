@@ -1210,6 +1210,99 @@
       flex-shrink: 0;
     }
 
+    /* ───── MANAGEMENT TEAM ───── */
+    #management {
+      background: linear-gradient(180deg, var(--blue-deep) 0%, #081020 100%);
+    }
+
+    .management-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+    }
+
+    .management-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s;
+      cursor: default;
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .management-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 30px 60px rgba(245, 158, 11, 0.2);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .management-img {
+      width: 100%;
+      aspect-ratio: 1;
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .management-img-wrapper {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(245, 158, 11, 0.3);
+      padding: 6px;
+      background: linear-gradient(135deg, rgba(26, 71, 204, 0.3), rgba(10, 22, 40, 0.8));
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .management-card:hover .management-img-wrapper {
+      border-color: var(--gold-light);
+      box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+      transform: scale(1.06);
+    }
+
+    .management-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .management-card:hover .management-img img {
+      transform: scale(1.12);
+    }
+
+    .management-info {
+      padding: 0 20px 30px;
+    }
+
+    .management-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    .management-position {
+      font-size: 13px;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
     /* ───── FACULTY ───── */
     #faculty {
       background: linear-gradient(180deg, #081020 0%, var(--blue-deep) 100%);
@@ -2364,6 +2457,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#courses">Courses</a></li>
+      <li><a href="#management">Management Team</a></li>
       <li><a href="#faculty">Faculty</a></li>
       <li><a href="#results">Results</a></li>
       <li><a href="#jee-neet">JEE/NEET</a></li>
@@ -2380,6 +2474,7 @@
     <ul>
       <li><a href="#about" onclick="toggleMenu()">About</a></li>
       <li><a href="#courses" onclick="toggleMenu()">Courses</a></li>
+      <li><a href="#management" onclick="toggleMenu()">Management Team</a></li>
       <li><a href="#faculty" onclick="toggleMenu()">Faculty</a></li>
       <li><a href="#results" onclick="toggleMenu()">Results</a></li>
       <li><a href="#jee-neet" onclick="toggleMenu()">JEE / NEET</a></li>
@@ -2654,6 +2749,70 @@
           <div class="special-hl">🇮🇳 Proof that small-town schools can achieve national-level greatness</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT TEAM -->
+  <section id="management">
+    <div style="text-align:center; margin-bottom:0;">
+      <div class="section-tag reveal">🏛️ Leadership</div>
+      <h2 class="section-title reveal">Management <span>Team</span></h2>
+      <p class="section-sub reveal" style="margin: 0 auto;">Meet the dedicated leaders guiding our institution</p>
+    </div>
+    <div class="management-grid">
+      
+      <!-- Member 1 -->
+      <div class="management-card reveal" style="transition-delay:0.1s;">
+        <div class="management-img">
+          <div class="management-img-wrapper">
+            <img src="images/management1.jpg" alt="Chairman" onerror="this.src='images/school.jpg'">
+          </div>
+        </div>
+        <div class="management-info">
+          <div class="management-name">Name of Chairman</div>
+          <div class="management-position">Chairman</div>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div class="management-card reveal" style="transition-delay:0.2s;">
+        <div class="management-img">
+          <div class="management-img-wrapper">
+            <img src="images/management2.jpg" alt="Director" onerror="this.src='images/school.jpg'">
+          </div>
+        </div>
+        <div class="management-info">
+          <div class="management-name">Name of Director</div>
+          <div class="management-position">Director</div>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div class="management-card reveal" style="transition-delay:0.3s;">
+        <div class="management-img">
+          <div class="management-img-wrapper" style="background: white;">
+            <img src="images/principal.jpg" alt="Principal" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
+          </div>
+        </div>
+        <div class="management-info">
+          <div class="management-name">Mayank Chaudhari</div>
+          <div class="management-position">Principal</div>
+        </div>
+      </div>
+
+      <!-- Member 4 -->
+      <div class="management-card reveal" style="transition-delay:0.4s;">
+        <div class="management-img">
+          <div class="management-img-wrapper">
+            <img src="images/Trustee.jpg" alt="Trustee" style="object-position: top center;" onerror="this.src='images/school.jpg'">
+          </div>
+        </div>
+        <div class="management-info">
+          <div class="management-name">Narendra Soni</div>
+          <div class="management-position">Trustee</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
