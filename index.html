@@ -2663,6 +2663,26 @@
       letter-spacing: 0.5px;
     }
 
+    #mbbs-achievers .poster-card {
+      width: 320px;
+    }
+
+    #mbbs-achievers .poster-img-box {
+      width: 320px;
+      height: auto;
+      aspect-ratio: 16/9;
+    }
+
+    @media (max-width: 768px) {
+      #mbbs-achievers .poster-card {
+        width: 100%;
+        max-width: 400px;
+      }
+      #mbbs-achievers .poster-img-box {
+        width: 100%;
+      }
+    }
+
     @media (max-width: 600px) {
       .poster-card {
         width: 160px;
@@ -3260,44 +3280,28 @@
 
     <div class="poster-row reveal">
       
-      <!-- Achiever 1 -->
+      <!-- Achiever Poster 1 -->
       <div class="poster-card">
         <div class="poster-img-box">
-          <img src="images/doctor.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Aditya'">
+          <img src="images/doctor.jpg" alt="MBBS Achievers">
         </div>
-        <div class="poster-name">Aditya Verma</div>
+        <div class="poster-name">ભુમિકા મુનિયા, દિયા ઝાડ, સુરેન્દ્ર ડામોર, વૈભવ ગરાસીયા</div>
       </div>
 
-      <!-- Achiever 2 -->
+      <!-- Achiever Poster 2 -->
       <div class="poster-card">
         <div class="poster-img-box">
-          <img src="images/mbbs (1).jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Priya'">
+          <img src="images/mbbs (1).jpg" alt="MBBS Achievers">
         </div>
-        <div class="poster-name">Priya Sharma</div>
+        <div class="poster-name">જૈમીની જાટવા, નંદીની મુનિયા, ધ્રુવિકા સોની</div>
       </div>
 
-      <!-- Achiever 3 -->
-      <div class="poster-card">
+      <!-- Achiever Poster 3 -->
+      <div class="poster-card" id="bhms-card">
         <div class="poster-img-box">
-          <img src="images/mbbs (2).jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul'">
+          <img src="images/mbbs (2).jpg" alt="BHMS Achievers">
         </div>
-        <div class="poster-name">Rahul Patel</div>
-      </div>
-
-      <!-- Achiever 4 -->
-      <div class="poster-card">
-        <div class="poster-img-box">
-          <img src="images/mbbs4.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Sneha'">
-        </div>
-        <div class="poster-name">Sneha Gupta</div>
-      </div>
-
-      <!-- Achiever 5 -->
-      <div class="poster-card">
-        <div class="poster-img-box">
-          <img src="images/mbbs5.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Dev'">
-        </div>
-        <div class="poster-name">Dev Trivedi</div>
+        <div class="poster-name">પરાગ ડામોર, ધ્રુવી પ્રજાપતિ, ભૂમિકા જાટવા</div>
       </div>
 
     </div>
