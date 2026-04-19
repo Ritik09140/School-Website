@@ -117,11 +117,12 @@ school-website/
     ├── school.jpg
     ├── school_logo.png
     └── teachers/
-        ├── teacher1.jpg
+        ├── teacher1.jpg                     
         └── teacher2.jpg
 ```
 
----
+---                 
+
 
 ## 🖼️ How to Add Images
 

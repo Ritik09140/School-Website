@@ -6,19 +6,35 @@
 }
 
 #intro {
- 
-  position:fixed;
-  width:100%;
-  height:100vh;
-  background:black;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:white;
-  animation: zoomOut 4s forwards;
-}
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* 🔥 SCHOOL BUILDING BACKGROUND */
+  background: url("images/building.jpg") no-repeat center;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+
+  z-index: 9999;
+}
+#intro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+}
 @keyframes zoomOut {
   0%{opacity:1; transform:scale(1.2)}
   80%{opacity:1;}
@@ -26,19 +42,20 @@
 }
 
 @keyframes fadeOut {
-  0%{opacity:1}
-  80%{opacity:1}
-  100%{opacity:0; display:none;}
+  0% { opacity: 1 }
+  90% { opacity: 1 }   /* पहले 80 था */
+  100% { opacity: 0; }
 }
 
+
 .hero {
-  height:100vh;
-  background:url('images/school.jpg') center/cover;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+  height: 100vh;
+  background: url("images/building.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 section {
   padding:50px;
@@ -86,10 +103,58 @@ html {
   object-fit: cover;
 }
 #intro {
-  background: url("images/modi.jpg") no-repeat center center/cover;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  /* 🔥 PRO MAX BACKGROUND */
+  background: linear-gradient(135deg, #020617, #0a1f44, #001f3f);
+  overflow: hidden;
+  z-index: 9999;
+}
+#intro::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: #00c6ff;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.4;
+  top: 20%;
+  left: 30%;
+  animation: moveGlow 8s infinite alternate;
 }
 
+#intro::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #ff00cc;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.3;
+  bottom: 10%;
+  right: 20%;
+  animation: moveGlow 10s infinite alternate;
+}
+
+@keyframes moveGlow {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(80px, -80px);
+  }
+}
 #intro::before {
   content: "";
   position: absolute;
@@ -99,10 +164,24 @@ html {
   height: 100%;
   background: rgba(0,0,0,0.6); /* dark overlay */
 }
-
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
 .intro-content {
   position: relative;
   z-index: 1;
+}
+.intro-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 .intro-image img {
   width: 220px;
@@ -154,4 +233,303 @@ body::after {
   height: 100%;
   background: rgba(255,255,255,0.85);
   z-index: -1;
+}
+/* HEADER DESIGN */
+#navbar {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 10px 20px;
+}
+
+/* LOGO CIRCLE */
+.nav-logo-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00c6ff;
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* IMAGE FIT */
+.nav-logo-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00c6ff;
+    box-shadow: 0 0 15px #00c6ff;
+}
+/* ANIMATION */
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* HEADER DESIGN */
+#navbar {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 10px 20px;
+}
+
+/* LOGO CIRCLE */
+.nav-logo-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00c6ff;
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* IMAGE FIT */
+.nav-logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    animation: rotateLogo 6s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes rotateLogo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* LOGO CIRCLE FIX */
+.nav-logo-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00c6ff;
+    box-shadow: 0 0 15px #00c6ff;
+}
+
+/* IMAGE + ROTATION */
+.nav-logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: rotateLogo 8s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes rotateLogo {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* HERO SECTION PREMIUM DESIGN */
+.hero {
+  min-height: 100vh;   /* height fixed नहीं, flexible */
+  width: 100%;
+
+  background: url("images/building.jpg") no-repeat center;
+  background-size: contain;   /* पूरा image दिखे */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+/* GLOW EFFECT BACKGROUND */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #00c6ff55, transparent);
+    border-radius: 50%;
+    animation: pulseGlow 4s infinite;
+}
+
+/* CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  margin-top: 0;   /* ❌ 200px जैसी value हटाओ */
+}
+
+/* LOGO */
+.hero-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #00c6ff;
+    box-shadow: 0 0 25px #00c6ff;
+}
+
+/* LOGO IMAGE */
+.hero {
+  height: 100vh;
+  background: url("images/building.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes zoomImg {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+
+/* TEXT */
+.hero-text h1 {
+    color: white;
+    font-size: 36px;
+    letter-spacing: 3px;
+}
+
+.hero-text h2 {
+    color: #00c6ff;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+/* ROTATE ANIMATION */
+
+
+/* GLOW ANIMATION */
+@keyframes pulseGlow {
+    0% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 0.4; }
+}
+/* HERO BACKGROUND IMAGE */
+.hero {
+  min-height: 100vh;
+  padding: 20px;
+
+  background: url("images/building.jpg") no-repeat center;
+  background-size: contain;
+}
+/* DARK OVERLAY (like pro design) */
+
+
+/* CENTER CONTENT */
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+/* LOGO STYLE */
+.hero-logo {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border-radius: 50%;
+
+    background: radial-gradient(circle, rgba(0,200,255,0.4), transparent);
+    box-shadow: 0 0 50px rgba(0,200,255,0.8);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* LOGO IMAGE */
+.hero-logo img {
+    width: 120;
+    height: 120px;
+    
+
+    animation: rotateLogo 8s linear infinite;
+}
+
+/* TEXT */
+.hero-center h1 {
+  font-size: clamp(22px, 4vw, 40px);
+  color: white;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.hero-center h2 {
+    color: #00d9ff;
+    letter-spacing: 2px;
+}
+
+/* ROTATION */
+@keyframes rotateLogo {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Navbar logo rotate kare */
+.nav-logo-icon img {
+  animation: rotateLogo 6s linear infinite;
+}
+
+/* Animation */
+@keyframes rotateLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Intro (welcome) me animation band */
+#intro img {
+  animation: none !important;
+}
+/* PERFECT CENTER WELCOME LOGO */
+.welcome-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.welcome-logo img {
+  width: 150px;  /* bigger */
+  height: 150px;
+  border-radius: 50%;
+  opacity: 1;
+  filter: brightness(1.3) contrast(1.2);
+}
+.welcome-logo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+
+  box-shadow: 0 0 30px #00c6ff, 0 0 60px #00c6ff;
+  animation: spinLogo 6s linear infinite;
+}
+
+@keyframes spinLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+#intro h1 {
+  font-size: 40px;
+  color: #ffd700;
+  letter-spacing: 3px;
+ 
+}
+
+#intro p {
+  color: #ccc;
+  font-size: 16px;
+}
+@media (max-width: 768px) {
+  .hero-logo img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .hero-center h1 {
+    font-size: 22px;
+  }
 }
