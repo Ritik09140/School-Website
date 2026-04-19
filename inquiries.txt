@@ -8,3 +8,13 @@ Class: Std 12 (Science)
 Medium: English Medium
 Message: THIS IS WEB SITE TESTING  
 ----------------------
+
+--- rutvik baria (6354695050) ---
+New Student Inquiry:
+
+Name: rutvik baria
+Phone: 6354695050
+Class: JEE Coaching
+Medium: English Medium
+Message: this is web site testing 
+----------------------
