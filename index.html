@@ -2593,6 +2593,54 @@
       }
     }
 
+    #mbbs-achievers {
+      background: #f8fafc;
+      padding: 80px 5%;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .poster-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .achiever-poster {
+      flex: 0 1 450px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      line-height: 0; /* Remove extra space below image */
+    }
+
+    .achiever-poster:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border-color: var(--blue-bright);
+    }
+
+    .achiever-poster img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      object-fit: contain; /* Ensure no cropping */
+    }
+
+    @media (max-width: 768px) {
+      .achiever-poster {
+        flex: 0 1 100%;
+        max-width: 500px;
+      }
+    }
+
     @media (max-width: 600px) {
       .poster-card {
         width: 160px;
@@ -3176,6 +3224,31 @@
         <div class="achievement-year">Class of 2024</div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- MBBS ACHIEVERS POSTERS (NO NAMES) -->
+  <section id="mbbs-achievers">
+    <div style="text-align:center;">
+      <h2 class="section-title reveal" style="color:#0a1628;">MBBS <span>Achievers</span></h2>
+      <p class="section-sub reveal" style="margin: 0 auto; color:#475569; font-weight:600; font-size:18px;">
+        MBBS માં પ્રવેશ મેળવનાર વિદ્યાર્થીઓ
+      </p>
+    </div>
+
+    <div class="poster-container reveal">
+      <!-- Poster 1 -->
+      <div class="achiever-poster">
+        <img src="images/doctor.jpg" alt="MBBS Achievers Poster 1">
+      </div>
+      <!-- Poster 2 -->
+      <div class="achiever-poster">
+        <img src="images/mbbs (1).jpg" alt="MBBS Achievers Poster 2">
+      </div>
+      <!-- Poster 3 -->
+      <div class="achiever-poster">
+        <img src="images/mbbs (2).jpg" alt="MBBS Achievers Poster 3">
+      </div>
     </div>
   </section>
 
