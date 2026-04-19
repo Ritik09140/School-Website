@@ -1210,14 +1210,100 @@
       flex-shrink: 0;
     }
 
+    /* ───── MANAGEMENT TEAM ───── */
+    #management {
+      background: linear-gradient(180deg, var(--blue-deep) 0%, #081020 100%);
     }
 
-    @media (max-width: 480px) {
-      .management-card {
-        flex: 0 1 100%;
-        max-width: 300px;
-      }
+    .management-grid {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 60px;
     }
+
+    .management-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s;
+      cursor: default;
+      width: 100%;
+      max-width: 240px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .management-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 30px 60px rgba(245, 158, 11, 0.2);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .management-img {
+      width: 100%;
+      aspect-ratio: 1;
+      padding: 25px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .management-img-wrapper {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(245, 158, 11, 0.3);
+      padding: 6px;
+      background: linear-gradient(135deg, rgba(26, 71, 204, 0.3), rgba(10, 22, 40, 0.8));
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .management-card:hover .management-img-wrapper {
+      border-color: var(--gold-light);
+      box-shadow: 0 15px 35px rgba(245, 158, 11, 0.3);
+      transform: scale(1.06);
+    }
+
+    .management-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .management-card:hover .management-img img {
+      transform: scale(1.12);
+    }
+
+    .management-info {
+      padding: 0 20px 30px;
+    }
+
+    .management-name {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    .management-position {
+      font-size: 13px;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ───── FACULTY ───── */
     #faculty {
       background: linear-gradient(180deg, #081020 0%, var(--blue-deep) 100%);
     }
@@ -2178,86 +2264,6 @@
       background: rgba(37, 99, 235, 0.4);
     }
 
-    /* ───── MANAGEMENT TEAM (FORCED HORIZONTAL) ───── */
-    #management {
-      background: radial-gradient(circle at center, #0a1628 0%, #060b18 100%);
-      padding: 100px 0;
-      width: 100%;
-      overflow: hidden;
-    }
-    .management-grid {
-      display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: wrap !important;
-      justify-content: center !important;
-      gap: 20px !important;
-      max-width: 1400px;
-      margin: 60px auto 0 !important;
-      padding: 0 20px;
-    }
-    .management-card {
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 30px 15px;
-      width: 215px !important;
-      flex: 0 0 215px !important;
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    }
-    .management-card:hover {
-      transform: translateY(-12px);
-      border-color: rgba(245, 158, 11, 0.5);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.1);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .management-img-wrapper {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 25px;
-      border-radius: 50%;
-      padding: 6px;
-      background: linear-gradient(135deg, #b8860b, #ffdf00, #b8860b);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    }
-    .management-img-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #0a1628;
-    }
-    .management-img-inner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
-    .management-name {
-      color: #fff;
-      font-size: 21px;
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-family: 'Playfair Display', serif;
-    }
-    .management-position {
-      color: #f59e0b;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-    @media (max-width: 600px) {
-      .management-card {
-        width: 100% !important;
-        flex: 0 0 100% !important;
-        max-width: 320px;
-      }
-    }
-
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -2746,69 +2752,78 @@
     </div>
   </section>
 
-  <!-- MANAGEMENT TEAM (PREMIUM REDESIGN) -->
+  <!-- MANAGEMENT TEAM -->
   <section id="management">
     <div style="text-align:center; margin-bottom:0;">
       <div class="section-tag reveal">🏛️ Leadership</div>
       <h2 class="section-title reveal">Management <span>Team</span></h2>
-      <p class="section-sub reveal" style="margin: 0 auto; max-width: 600px;">Meet the dedicated leaders guiding our institution towards academic excellence and holistic growth.</p>
+      <p class="section-sub reveal" style="margin: 0 auto;">Meet the dedicated leaders guiding our institution</p>
     </div>
-
     <div class="management-grid">
       
-      <!-- Member 1: Narendra Soni -->
+      <!-- Member 1 -->
       <div class="management-card reveal" style="transition-delay:0.1s;">
-        <div class="management-img-wrapper">
-          <div class="management-img-inner">
-            <img src="images/Trustee.jpg" alt="Narendra Soni" onerror="this.src='images/school.jpg'">
+        <div class="management-img">
+          <div class="management-img-wrapper">
+            <img src="images/Trustee.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;" onerror="this.src='images/school.jpg'">
           </div>
         </div>
-        <div class="management-name">Narendra Soni</div>
-        <div class="management-position">Trustee</div>
+        <div class="management-info">
+          <div class="management-name">Narendra Soni</div>
+          <div class="management-position">Trustee</div>
+        </div>
       </div>
 
-      <!-- Member 2: Pintu Soni -->
+      <!-- Member 2 -->
       <div class="management-card reveal" style="transition-delay:0.2s;">
-        <div class="management-img-wrapper">
-          <div class="management-img-inner">
-            <img src="images/pintu.jpg" alt="Pintu Soni" onerror="this.src='images/school.jpg'">
+        <div class="management-img">
+          <div class="management-img-wrapper">
+            <img src="images/pintu.jpg" alt="Trustee" style="object-fit: cover; object-position: top center;" onerror="this.src='images/school.jpg'">
           </div>
         </div>
-        <div class="management-name">Pintu Soni</div>
-        <div class="management-position">Trustee</div>
+        <div class="management-info">
+          <div class="management-name">Pintu Soni</div>
+          <div class="management-position">Trustee</div>
+        </div>
       </div>
 
-      <!-- Member 3: Mayank Chaudhari -->
+      <!-- Member 3 -->
       <div class="management-card reveal" style="transition-delay:0.3s;">
-        <div class="management-img-wrapper">
-          <div class="management-img-inner" style="background: white;">
-            <img src="images/principal.jpg" alt="Mayank Chaudhari" style="object-fit: contain;" onerror="this.src='images/school.jpg'">
+        <div class="management-img">
+          <div class="management-img-wrapper" style="background: white;">
+            <img src="images/principal.jpg" alt="Campus Director" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
           </div>
         </div>
-        <div class="management-name">Mayank Chaudhari</div>
-        <div class="management-position">Campus Director</div>
+        <div class="management-info">
+          <div class="management-name">Mayank Chaudhari</div>
+          <div class="management-position">Campus Director</div>
+        </div>
       </div>
 
-      <!-- Member 4: S. S. Bajpai -->
+      <!-- Member 4 -->
       <div class="management-card reveal" style="transition-delay:0.4s;">
-        <div class="management-img-wrapper">
-          <div class="management-img-inner" style="background: white;">
-            <img src="images/ss.jpg" alt="S. S. Bajpai" style="object-fit: contain;" onerror="this.src='images/school.jpg'">
+        <div class="management-img">
+          <div class="management-img-wrapper" style="background: white;">
+            <img src="images/ss.jpg" alt="Principal" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
           </div>
         </div>
-        <div class="management-name">S. S. Bajpai</div>
-        <div class="management-position">Principal</div>
+        <div class="management-info">
+          <div class="management-name">S. S. Bajpai</div>
+          <div class="management-position">Principal</div>
+        </div>
       </div>
 
-      <!-- Member 5: Shilpaben Patel -->
+      <!-- Member 5 -->
       <div class="management-card reveal" style="transition-delay:0.5s;">
-        <div class="management-img-wrapper">
-          <div class="management-img-inner" style="background: white;">
-            <img src="images/shilpa.jpg" alt="Shilpaben Patel" style="object-fit: contain;" onerror="this.src='images/school.jpg'">
+        <div class="management-img">
+          <div class="management-img-wrapper" style="background: white;">
+            <img src="images/shilpa.jpg" alt="Principal" style="object-fit: contain; object-position: center; background-color: white;" onerror="this.src='images/school.jpg'">
           </div>
         </div>
-        <div class="management-name">Shilpaben Patel</div>
-        <div class="management-position">Principal</div>
+        <div class="management-info">
+          <div class="management-name">Shilpaben Patel</div>
+          <div class="management-position">Principal</div>
+        </div>
       </div>
 
     </div>
