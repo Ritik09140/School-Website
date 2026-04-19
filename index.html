@@ -2632,6 +2632,8 @@
       height: auto;
       border-radius: 10px;
       display: block;
+      object-fit: contain; /* Ensure no cropping for wide posters */
+      background: #fff;
     }
 
     @media (max-width: 768px) {
@@ -3158,8 +3160,8 @@
       <div class="achievement-card">
         <div class="achievement-badge">MBBS</div>
         <div class="achievement-img-wrapper">
-          <div class="achievement-img-inner">
-            <img src="images/damor.jpg" alt="Surendra M. Damor">
+          <div class="achievement-img-inner" style="background: white;">
+            <img src="images/damor.jpg" alt="Surendra M. Damor" style="object-fit: contain; width: 100%; height: 100%;">
           </div>
         </div>
         <div class="achievement-name">Surendra M. Damor</div>
@@ -3200,14 +3202,14 @@
       <div class="achievement-card">
         <div class="achievement-badge">MBBS</div>
         <div class="achievement-img-wrapper">
-          <div class="achievement-img-inner">
-            <img src="images/student4.jpg" alt="Student" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Garrett'">
+          <div class="achievement-img-inner" style="background: white;">
+            <img src="images/p.jpg" alt="Vaibhav P. Garasiya" style="object-fit: contain; width: 100%; height: 100%;">
           </div>
         </div>
-        <div class="achievement-name">Sneha Gupta</div>
+        <div class="achievement-name">Vaibhav P. Garasiya</div>
         <div class="achievement-title">MBBS Selected</div>
-        <div class="achievement-detail">Secured Government Seat in <strong>BJ Medical College</strong>.</div>
-        <div class="achievement-year">Class of 2023</div>
+        <div class="achievement-detail">Secured Government Seat in <strong>MBBS</strong> with excellent rank.</div>
+        <div class="achievement-year">Class of 2024</div>
       </div>
 
       <!-- Student 5 -->
@@ -3248,11 +3250,6 @@
       <!-- Poster 3 -->
       <div class="achiever-poster">
         <img src="images/mbbs (2).jpg" alt="MBBS Achievers Poster 3">
-      </div>
-      <!-- Achiever 4 (Individual) -->
-      <div class="achiever-poster" style="padding-bottom: 20px;">
-        <img src="images/p.jpg" alt="Vaibhav P. Garasiya">
-        <div class="poster-name" style="margin-top: 15px; line-height: 1.4;">Vaibhav P. Garasiya</div>
       </div>
     </div>
   </section>
