@@ -1,0 +1,328 @@
+<!-- PREMIUM CAMPUS LIFE SECTION START -->
+<style>
+    :root {
+        --campus-bg: #0a1628;
+        --campus-accent: #2563eb;
+        --campus-glow: #60a5fa;
+        --campus-gold: #f59e0b;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.1);
+    }
+
+    .campus-section {
+        background-color: var(--campus-bg);
+        padding: 120px 5%;
+        position: relative;
+        overflow: hidden;
+        color: #ffffff;
+        font-family: 'Mukta', sans-serif;
+    }
+
+    /* Floating Particles Background */
+    .campus-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .particle {
+        position: absolute;
+        background: var(--campus-glow);
+        border-radius: 50%;
+        opacity: 0.3;
+        filter: blur(1px);
+        animation: floatParticle var(--duration) infinite ease-in-out;
+    }
+
+    @keyframes floatParticle {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+        50% { transform: translateY(-100px) translateX(20px); opacity: 0.5; }
+    }
+
+    /* Section Header */
+    .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 80px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .section-tag {
+        display: inline-block;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        color: var(--campus-glow);
+        padding: 8px 24px;
+        border-radius: 100px;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 600;
+        animation: fadeInDown 0.8s ease both;
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(32px, 5vw, 56px);
+        font-weight: 900;
+        margin-bottom: 15px;
+        line-height: 1.1;
+        animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .section-title span {
+        background: linear-gradient(90deg, #fff, var(--campus-glow), var(--campus-gold));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-subtitle-gu {
+        font-size: clamp(18px, 3vw, 24px);
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+        animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    /* Cards Grid */
+    .campus-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    .experience-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid var(--glass-border);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    .experience-card.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .experience-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        border-color: var(--campus-glow);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(37, 99, 235, 0.2);
+    }
+
+    .card-image-box {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .card-image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+    }
+
+    .experience-card:hover .card-image-box img {
+        transform: scale(1.15);
+    }
+
+    .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent, rgba(10, 22, 40, 0.8));
+    }
+
+    .card-content {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .card-content h3 {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--campus-glow);
+    }
+
+    .card-content p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card-glow-effect {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: radial-gradient(circle at var(--x) var(--y), rgba(37, 99, 235, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .experience-card:hover .card-glow-effect {
+        opacity: 1;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .campus-section { padding: 80px 5%; }
+        .section-title { font-size: 36px; }
+        .campus-grid { gap: 20px; }
+    }
+</style>
+
+<section id="campus-experience" class="campus-section">
+    <!-- Animated Particles -->
+    <div class="campus-particles" id="campusParticles"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="section-header">
+            <span class="section-tag">Explore Our World</span>
+            <h2 class="section-title">Student Experience & <span>Campus Life</span></h2>
+            <p class="section-subtitle-gu">વિદ્યાર્થીઓના અનુભવ અને શાળાનું વાતાવરણ</p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="campus-grid">
+            <!-- Card 1: Classroom -->
+            <div class="experience-card">
+                <div class="card-image-box">
+                    <img src="images/modern_classroom_1776954332425.png" alt="Modern Classroom">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Classroom Experience</h3>
+                    <p>Smart classes, digital learning, and friendly teachers creating an inspiring atmosphere.</p>
+                </div>
+                <div class="card-glow-effect"></div>
+            </div>
+
+            <!-- Card 2: Science Labs -->
+            <div class="experience-card">
+                <div class="card-image-box">
+                    <img src="images/science_lab_1776954350842.png" alt="Science Lab">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Science Labs</h3>
+                    <p>Advanced Physics, Chemistry, and Biology labs for practical, hands-on learning experiences.</p>
+                </div>
+                <div class="card-glow-effect"></div>
+            </div>
+
+            <!-- Card 3: Activities -->
+            <div class="experience-card">
+                <div class="card-image-box">
+                    <img src="images/student_activities_1776954370276.png" alt="Student Activities">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Student Activities</h3>
+                    <p>Engaging sports, cultural events, and diverse competitions to nurture every talent.</p>
+                </div>
+                <div class="card-glow-effect"></div>
+            </div>
+
+            <!-- Card 4: Achievements -->
+            <div class="experience-card">
+                <div class="card-image-box">
+                    <img src="images/student_achievements_1776954388058.png" alt="Achievements">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <h3>Achievements</h3>
+                    <p>Consistent 80-90% board results with dedicated preparation for JEE and NEET exams.</p>
+                </div>
+                <div class="card-glow-effect"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // 1. Particle Background Generator
+    const particleContainer = document.getElementById('campusParticles');
+    const particleCount = 25;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random positioning and animation
+        const size = Math.random() * 5 + 2 + 'px';
+        particle.style.width = size;
+        particle.style.height = size;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.setProperty('--duration', Math.random() * 10 + 10 + 's');
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        
+        particleContainer.appendChild(particle);
+    }
+
+    // 2. Mouse Glow Effect for Cards
+    const cards = document.querySelectorAll('.experience-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            card.querySelector('.card-glow-effect').style.setProperty('--x', `${x}px`);
+            card.querySelector('.card-glow-effect').style.setProperty('--y', `${y}px`);
+        });
+    });
+
+    // 3. Scroll Reveal Animation
+    const observerOptions = {
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add delay for staggered effect
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 150);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    cards.forEach(card => observer.observe(card));
+</script>
+<!-- PREMIUM CAMPUS LIFE SECTION END -->

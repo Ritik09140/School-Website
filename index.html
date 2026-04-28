@@ -2,7 +2,8 @@
 <html lang="gu">
 
 <head>
-
+<link rel="icon" href="favicon.jpg" type="image/jpeg">
+<link rel="shortcut icon" href="favicon.jpg">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -724,11 +725,11 @@
       background: linear-gradient(135deg, rgba(13, 37, 80, 0.9), rgba(26, 71, 204, 0.3));
       border: 1px solid var(--glass-border);
       border-radius: 20px;
-      margin: -50px 5% 0;
+      margin: 40px 5% 0;
       position: relative;
       z-index: 10;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       overflow: hidden;
       backdrop-filter: blur(20px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -1632,44 +1633,73 @@
     }
 
     .gallery-item {
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
       aspect-ratio: 4/3;
       cursor: pointer;
       position: relative;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
+      background: #ffffff;
+      padding: 4px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    .gallery-item:nth-child(1) {
-      grid-column: span 2;
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, #2563eb, #f59e0b, #60a5fa, #fcd34d, #2563eb);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: galleryBorder 3s linear infinite;
+      opacity: 0.5;
+      transition: opacity 0.3s, filter 0.3s;
     }
 
-    .gallery-item:nth-child(5) {
+    .gallery-item:hover::before {
+      opacity: 1;
+      animation-duration: 1.5s;
+      filter: blur(2px);
+    }
+
+    @keyframes galleryBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(6) {
       grid-column: span 2;
     }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+      object-fit: contain;
+      border-radius: 17px;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+      background: #ffffff;
     }
 
     .gallery-item:hover img {
-      transform: scale(1.08);
+      transform: scale(1.1) rotate(1deg);
     }
 
     .gallery-hover {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(26, 71, 204, 0.7), rgba(10, 22, 40, 0.5));
+      inset: 3px;
+      background: linear-gradient(135deg, rgba(26, 71, 204, 0.6), rgba(10, 22, 40, 0.4));
       opacity: 0;
       transition: opacity 0.4s;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 40px;
+      z-index: 2;
+      border-radius: 13px;
     }
 
     .gallery-item:hover .gallery-hover {
@@ -2474,16 +2504,10 @@
 
     .achievements-row {
       display: flex;
-      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 30px;
-      overflow-x: auto;
       padding: 60px 10px 80px;
-      scrollbar-width: none;
-      /* Firefox */
-      -ms-overflow-style: none;
-      /* IE/Edge */
-      scroll-snap-type: x mandatory;
-      justify-content: flex-start;
     }
 
     .achievements-row::-webkit-scrollbar {
@@ -2603,9 +2627,9 @@
 
     @media (max-width: 768px) {
       .achievements-row {
-        justify-content: flex-start;
-        padding-left: 20px;
-        padding-right: 20px;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
         gap: 20px;
       }
 
@@ -2710,8 +2734,8 @@
         font-size: 32px;
       }
 
-      /* Horizontal Scrolling for Achievements & Courses on Mobile */
-      .achievements-row, .courses-grid {
+      /* Horizontal Scrolling for Courses on Mobile */
+      .courses-grid {
         display: flex !important;
         flex-direction: row !important;
         overflow-x: auto !important;
@@ -2721,14 +2745,22 @@
         justify-content: flex-start !important;
         -webkit-overflow-scrolling: touch;
       }
+      .achievements-row {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+      }
 
-      .achievement-card, .course-card {
+      .course-card {
         min-width: 85vw !important;
         flex: 0 0 85vw !important;
         scroll-snap-align: center !important;
       }
+      .achievement-card {
+        min-width: 85vw !important;
+        flex: 0 0 85vw !important;
+      }
 
-      .achievements-row::-webkit-scrollbar, .courses-grid::-webkit-scrollbar {
+      .courses-grid::-webkit-scrollbar {
         display: none;
       }
 
@@ -2763,10 +2795,78 @@
       }
     }
 
+    /* ─── MOBILE HORIZONTAL SCROLL FIX (design unchanged) ─── */
+    html {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+    body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+    * {
+      max-width: 100%;
+    }
+    img, video, iframe {
+      max-width: 100%;
+    }
+    /* prevent fixed-width items from causing page scroll */
+    .info-item {
+      min-width: unset;
+    }
+    @media (max-width: 768px) {
+      .info-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 5%;
+      }
+      .info-item {
+        width: 100%;
+      }
+      .hero-full-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-full-btns a {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+      }
+    }
   </style>
 
 
+
 </head>
+
+<audio id="welcomeAudio">
+    <source src="welcome.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let played = false;
+
+function playWelcome() {
+    if (!played) {
+        let audio = document.getElementById("welcomeAudio");
+
+        audio.play().then(() => {
+            console.log("Playing...");
+        }).catch(err => {
+            console.log("Error:", err);
+        });
+
+        played = true;
+    }
+}
+
+// First interaction triggers
+window.addEventListener("click", playWelcome);
+window.addEventListener("touchstart", playWelcome);
+window.addEventListener("scroll", playWelcome);
+</script>
+
+
 
 <body>
 
@@ -2886,11 +2986,365 @@
     </div>
   </div>
 
+  <!-- SCHOOL INTRO VIDEO SECTION -->
+  <section id="school-video-intro" style="padding: 100px 5%; background: linear-gradient(180deg, var(--blue-deep) 0%, #081020 100%); text-align: center; position: relative;">
+    <div class="section-tag" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">🎥 School Campus</div>
+    <h2 class="section-title">Welcome to <span style="color: var(--blue-light);">Our School</span></h2>
+    <p class="section-sub" style="margin: 0 auto 50px; color: rgba(255,255,255,0.9);">Experience the excellent infrastructure and learning environment</p>
+
+    <style>
+      .premium-animated-border {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-radius: 24px;
+        aspect-ratio: 16/9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(37,99,235,0.4), 0 0 30px rgba(96,165,250,0.3);
+      }
+      .premium-animated-border::before {
+        content: '';
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: conic-gradient(transparent, transparent, transparent, #3b82f6, #60a5fa, #fcd34d, #3b82f6);
+        animation: rotateBorder 4s linear infinite;
+        z-index: 0;
+      }
+      .premium-animated-border::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        background: #000;
+        border-radius: 20px;
+        z-index: 0;
+      }
+      @keyframes rotateBorder {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .premium-animated-border video {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        outline: none;
+        background: #000;
+      }
+    </style>
+
+    <div class="premium-animated-border reveal">
+      <!-- Actual Video -->
+      <video id="welcomeVideoPlayer" src="videos/welcome.mp4" controls preload="metadata"></video>
+      
+      <!-- Custom Play Overlay -->
+      <div id="welcomePlayIndicator" style="position: absolute; inset: 4px; display: flex; align-items: center; justify-content: center; z-index: 2; pointer-events: none; background: rgba(0,0,0,0.1); border-radius: 20px; transition: opacity 0.4s ease;">
+         <div class="video-play-btn" style="width: 90px; height: 90px; background: linear-gradient(135deg, var(--blue-bright), var(--blue-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; border: 3px solid rgba(255,255,255,0.9); box-shadow: 0 0 40px rgba(37,99,235,0.9); animation: pulseGlow 2s infinite; padding-left: 6px;">
+            ▶
+         </div>
+      </div>
+    </div>
+
+    <script>
+      // Fix for local playback & clean thumbnail without #t=
+      document.addEventListener('DOMContentLoaded', () => {
+        const wVideo = document.getElementById('welcomeVideoPlayer');
+        const wIcon = document.getElementById('welcomePlayIndicator');
+        if (wVideo && wIcon) {
+          // Load 2nd second as thumbnail reliably
+          wVideo.addEventListener('loadedmetadata', () => {
+            wVideo.currentTime = 2.0;
+          });
+          
+          wVideo.addEventListener('play', () => wIcon.style.opacity = '0');
+          wVideo.addEventListener('pause', () => wIcon.style.opacity = '1');
+        }
+      });
+    </script>
+  </section>
+
+  <!-- COLLEGE OVERVIEW SECTION -->
+  <section id="college-overview" style="padding: 100px 5%; background: var(--blue-deep); position: relative; border-top: 1px solid rgba(255,255,255,0.05);">
+    <style>
+      .college-overview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 60px auto 0;
+      }
+
+      .college-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(96, 165, 250, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.02);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .college-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        border-color: var(--blue-glow);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4), 0 0 20px rgba(96, 165, 250, 0.2);
+      }
+
+      .college-card-img-wrapper {
+        position: relative;
+        aspect-ratio: 9/16;
+        overflow: hidden;
+        border-bottom: 2px solid rgba(255,255,255,0.05);
+      }
+
+      .college-card:hover .college-card-img-wrapper {
+        border-bottom-color: var(--blue-glow);
+      }
+
+      .college-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+        filter: brightness(0.7);
+      }
+
+      .college-card:hover .college-card-img {
+        transform: scale(1.05);
+        filter: brightness(0.9);
+      }
+
+      .college-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--blue-bright), var(--blue-light));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+        animation: pulseGlow 2s infinite;
+        z-index: 2;
+        padding-left: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .college-card:hover .college-play-btn {
+        background: white;
+        color: var(--blue-primary);
+        border-color: var(--blue-glow);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+      }
+
+      .college-card-info {
+        padding: 25px;
+        text-align: center;
+      }
+
+      .college-student-name {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 8px;
+        font-family: 'Playfair Display', serif;
+      }
+
+      .college-student-course {
+        font-size: 14px;
+        color: var(--blue-glow);
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+      }
+
+      .college-particles {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+      }
+    </style>
+
+    <div class="college-particles"></div>
+
+    <div style="text-align:center; position: relative; z-index: 2;">
+      <div class="section-tag reveal">🎓 College Life</div>
+      <h2 class="section-title reveal">Achiever College <span>Information</span></h2>
+      <p class="section-sub reveal" style="margin: 0 auto; color: var(--gold-light); font-size: 20px; font-weight: 600; letter-spacing: 1px;">College Courses</p>
+    </div>
+
+    <div class="college-overview-grid">
+      <!-- Card 1: collage.mp4 -->
+      <div class="college-card reveal">
+        <div class="college-card-img-wrapper" style="background: #000;">
+          <video class="college-auto-thumb" src="videos/collage.mp4#t=1.5" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; outline: none;"></video>
+          <div class="college-play-btn" style="pointer-events: none;">▶</div>
+        </div>
+      </div>
+
+      <!-- Card 2: collage2.mp4 -->
+      <div class="college-card reveal" style="transition-delay: 0.1s;">
+        <div class="college-card-img-wrapper" style="background: #000;">
+          <video class="college-auto-thumb" src="videos/collage2.mp4#t=1.5" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; outline: none;"></video>
+          <div class="college-play-btn" style="pointer-events: none;">▶</div>
+        </div>
+      </div>
+
+      <!-- Card 3: collage3.mp4 -->
+      <div class="college-card reveal" style="transition-delay: 0.2s;">
+        <div class="college-card-img-wrapper" style="background: #000;">
+          <video class="college-auto-thumb" src="videos/collage3.mp4#t=1.5" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; outline: none;"></video>
+          <div class="college-play-btn" style="pointer-events: none;">▶</div>
+        </div>
+      </div>
+
+      <!-- Card 4: collage4.mp4 -->
+      <div class="college-card reveal" style="transition-delay: 0.3s;">
+        <div class="college-card-img-wrapper" style="background: #000;">
+          <video class="college-auto-thumb" src="videos/collage4.mp4#t=1.5" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; outline: none;"></video>
+          <div class="college-play-btn" style="pointer-events: none;">▶</div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const collegeVideos = document.querySelectorAll('.college-auto-thumb');
+        collegeVideos.forEach(v => {
+          const btn = v.parentElement.querySelector('.college-play-btn');
+          if (btn) {
+            v.addEventListener('play', () => {
+              btn.style.display = 'none';
+              collegeVideos.forEach(other => {
+                if (other !== v && !other.paused) {
+                  other.pause();
+                }
+              });
+            });
+            v.addEventListener('pause', () => btn.style.display = 'flex');
+            v.addEventListener('ended', () => btn.style.display = 'flex');
+          }
+        });
+      });
+    </script>
+  </section>
+
+  <!-- RESULTS -->
+
+  <!-- STUDENT REVIEWS SECTION -->
+  <section id="student-reviews" style="padding: 100px 5%; background: linear-gradient(135deg, #081020 0%, var(--blue-deep) 100%); border-top: 1px solid rgba(255,255,255,0.1); position: relative;">
+    <div style="text-align:center; margin-bottom: 70px; position: relative; z-index: 2;">
+      <div class="section-tag" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">⭐ Testimonials</div>
+      <h2 class="section-title">Student <span style="color: var(--blue-light);">Reviews</span></h2>
+      <p class="section-sub" style="margin: 0 auto; color: rgba(255,255,255,0.9);">Hear directly from our bright students about their experience at The New Achiever School</p>
+    </div>
+
+    <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+      <!-- Review 1 -->
+      <div class="review-card reveal" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(96,165,250,0.3); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.02); cursor: pointer; backdrop-filter: blur(10px);">
+        <div class="review-video-wrap" style="position: relative; aspect-ratio: 9/16; background: #000; overflow: hidden; border-bottom: 3px solid var(--blue-glow);">
+          <video src="videos/review1.mp4#t=2.0" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 1;"></video>
+          <!-- Animated Play Icon -->
+          <div class="custom-play-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 65px; height: 65px; background: rgba(37,99,235,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 25px rgba(37,99,235,0.8); transition: opacity 0.3s ease; animation: pulseGlow 2s infinite; pointer-events: none; z-index: 10;">
+             ▶
+          </div>
+          <div style="position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.6); padding: 5px 12px; border-radius: 20px; font-size: 16px; backdrop-filter: blur(8px); display: flex; gap: 3px; color: #fcd34d; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 5; pointer-events: none; border: 1px solid rgba(255,255,255,0.15); letter-spacing: 2px;">
+             ★★★
+          </div>
+        </div>
+        <div class="review-content" style="padding: 28px;">
+          <h4 style="font-size: 24px; margin-bottom: 8px; color: var(--white); font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Bhumika Muniya</h4>
+          <p style="font-size: 14px; color: #60a5fa; margin-bottom: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">MBBS Selected</p>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.9); line-height: 1.8;">"The teachers here gave me the perfect guidance to crack NEET. The labs and study environment are simply the best!"</p>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card reveal" style="transition-delay: 0.1s; background: rgba(255,255,255,0.03); border: 1px solid rgba(96,165,250,0.3); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.02); cursor: pointer; backdrop-filter: blur(10px);">
+        <div class="review-video-wrap" style="position: relative; aspect-ratio: 9/16; background: #000; overflow: hidden; border-bottom: 3px solid var(--blue-glow);">
+          <video src="videos/review2.mp4#t=2.0" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 1;"></video>
+          <!-- Animated Play Icon -->
+          <div class="custom-play-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 65px; height: 65px; background: rgba(37,99,235,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 25px rgba(37,99,235,0.8); transition: opacity 0.3s ease; animation: pulseGlow 2s infinite; pointer-events: none; z-index: 10;">
+             ▶
+          </div>
+
+        </div>
+        <div class="review-content" style="padding: 28px;">
+          <h4 style="font-size: 24px; margin-bottom: 8px; color: var(--white); font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Sangada Vidhyani</h4>
+          <p style="font-size: 14px; color: #60a5fa; margin-bottom: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">B.Sc Microbiology Student</p>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.9); line-height: 1.8;">"Regular mock tests and personal attention from faculty made my preparation journey very smooth and successful."</p>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card reveal" style="transition-delay: 0.2s; background: rgba(255,255,255,0.03); border: 1px solid rgba(96,165,250,0.3); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.02); cursor: pointer; backdrop-filter: blur(10px);">
+        <div class="review-video-wrap" style="position: relative; aspect-ratio: 9/16; background: #000; overflow: hidden; border-bottom: 3px solid var(--blue-glow);">
+          <video src="videos/review3.mp4#t=2.0" controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 1;"></video>
+          <!-- Animated Play Icon -->
+          <div class="custom-play-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 65px; height: 65px; background: rgba(37,99,235,0.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 25px rgba(37,99,235,0.8); transition: opacity 0.3s ease; animation: pulseGlow 2s infinite; pointer-events: none; z-index: 10;">
+             ▶
+          </div>
+
+        </div>
+        <div class="review-content" style="padding: 28px;">
+          <h4 style="font-size: 24px; margin-bottom: 8px; color: var(--white); font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Bhabhor Jhankhna</h4>
+          <p style="font-size: 14px; color: #60a5fa; margin-bottom: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;">Gov. Job Assistant Post<br><span style="font-size: 11px; opacity: 0.8;">Kachchh Mandvi</span></p>
+          <p style="font-size: 16px; color: rgba(255,255,255,0.9); line-height: 1.8;">"The school feels like a second home. The smart classrooms and interactive teaching methods make learning fun."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS VIDEO JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const reviewVideos = document.querySelectorAll('.review-video-wrap video');
+      
+      reviewVideos.forEach(video => {
+        // Pause other videos when one starts playing
+        video.addEventListener('play', function() {
+          reviewVideos.forEach(v => {
+            if (v !== video) v.pause();
+          });
+          
+          // Hide custom play icon
+          const icon = video.parentElement.querySelector('.custom-play-indicator');
+          if (icon) icon.style.display = 'none';
+        });
+
+        // Show play icon when paused or ended
+        video.addEventListener('pause', function() {
+          const icon = video.parentElement.querySelector('.custom-play-indicator');
+          if (icon) icon.style.display = 'flex';
+        });
+      });
+    });
+  </script>
+
   <!-- STATS BAR -->
   <div class="stats-bar reveal">
     <div class="stat-item">
-      <div class="stat-num" data-target="88.74" data-suffix="%">0%</div>
+      <div class="stat-num" data-target="100" data-suffix="%">0%</div>
       <div class="stat-label">Best 10th Result</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="100" data-suffix="%">0%</div>
+      <div class="stat-label">Best 12th Result</div>
     </div>
     <div class="stat-item">
       <div class="stat-num" data-target="500" data-suffix="+">0+</div>
@@ -2916,15 +3370,15 @@
     <div class="achievements-grid">
       <div class="ach-card reveal" style="--d:0.1s">
         <div class="ach-icon" style="--d:0s">🏅</div>
-        <div class="ach-num" data-target="88.74" data-suffix="%">0%</div>
+        <div class="ach-num" data-target="100" data-suffix="%">0%</div>
         <div class="ach-title">Best 10th Result</div>
-        <div class="ach-sub">School Topper Achievement</div>
+        <div class="ach-sub">Outstanding Performance</div>
       </div>
       <div class="ach-card reveal" style="--d:0.2s">
         <div class="ach-icon" style="--d:0.3s">📊</div>
-        <div class="ach-num" data-target="80" data-suffix="-90%">0%</div>
-        <div class="ach-title">10th Board Average</div>
-        <div class="ach-sub">Consistent Excellence</div>
+        <div class="ach-num" data-target="100" data-suffix="%">0%</div>
+        <div class="ach-title">Best 12th Result</div>
+        <div class="ach-sub">Excellent Academic Results</div>
       </div>
       <div class="ach-card reveal" style="--d:0.3s">
         <div class="ach-icon" style="--d:0.6s">🔬</div>
@@ -3326,7 +3780,7 @@
     <div class="results-content">
       <div class="results-stats">
         <p style="color:rgba(255,255,255,0.7); margin-bottom:36px; font-size:15px; line-height:1.7;">
-          Excellent academic performance with Best Individual Score at 100% and 12th Science Results at 95%. Consistent success in JEE/NEET exams.
+          Excellent academic performance with Best Individual Score at 100% and 12th Science Results at 100%. Consistent success in JEE/NEET exams.
         </p>
         <div class="result-bar-item reveal">
           <div class="result-bar-header">
@@ -3346,10 +3800,10 @@
         </div>
         <div class="result-bar-item reveal" style="transition-delay:0.2s">
           <div class="result-bar-header">
-            <span>12th Science Result</span><span style="color:var(--blue-glow)">95%</span>
+            <span>12th Science Result</span><span style="color:var(--blue-glow)">100%</span>
           </div>
           <div class="result-bar-track">
-            <div class="result-bar-fill" data-width="95"></div>
+            <div class="result-bar-fill" data-width="100"></div>
           </div>
         </div>
         <div class="result-bar-item reveal" style="transition-delay:0.3s">
@@ -3421,7 +3875,138 @@
     </div>
   </section>
 
+  <!-- PROUD ACHIEVERS -->
+  <style>
+    #proud-achievers {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, #081020 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 100px 5%;
+    }
+    
+    .achievers-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .achievers-img-wrapper {
+      position: relative;
+      margin-top: 50px;
+      border-radius: 20px;
+      padding: 6px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(37, 99, 235, 0.2);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .achievers-img-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(37, 99, 235, 0.1) 60deg,
+        var(--blue-bright) 120deg,
+        var(--blue-glow) 180deg,
+        var(--gold-light) 240deg,
+        rgba(37, 99, 235, 0.1) 300deg,
+        transparent 360deg
+      );
+      animation: rotate-border 4s linear infinite;
+      z-index: -2;
+    }
+
+    .achievers-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      background: #081020;
+      border-radius: 14px;
+      z-index: -1;
+    }
+
+    @keyframes rotate-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .achievers-img-inner {
+      border-radius: 14px;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+    }
+    
+    .achievers-img-wrapper:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(37, 99, 235, 0.4);
+    }
+    
+    .achievers-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .achievers-img-wrapper:hover .achievers-img {
+      transform: scale(1.04);
+    }
+    
+    .achievers-badge {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+      transition: transform 0.5s ease, box-shadow 0.3s;
+      z-index: 2;
+    }
+    
+    .achievers-img-wrapper:hover .achievers-badge {
+      box-shadow: 0 15px 40px rgba(245, 158, 11, 0.6);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .achievers-badge {
+        font-size: 14px;
+        padding: 8px 16px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+
+  <section id="proud-achievers">
+    <div class="achievers-container">
+      <div class="section-tag reveal">🏅 Success Stories</div>
+      <h2 class="section-title reveal">Proud <span>Achievers</span></h2>
+      <p class="section-sub reveal" style="margin: 0 auto;">Celebrating outstanding results in Medical, Engineering & other fields</p>
+      
+      <div class="achievers-img-wrapper reveal" style="transition-delay: 0.2s;">
+        <div class="achievers-img-inner">
+          <img src="images/allpic.jpg" alt="Proud Achievers Result Collage" class="achievers-img">
+        </div>
+        <div class="achievers-badge">100+ Selections 🌟</div>
+      </div>
+    </div>
+  </section>
+
   <!-- GALLERY -->
+
   <section id="gallery">
     <div style="text-align:center;">
       <div class="section-tag reveal">🖼️ Gallery</div>
@@ -3429,65 +4014,78 @@
       <p class="section-sub reveal" style="margin: 0 auto 0;">School Life, Events, Activities ની ઝલક</p>
     </div>
     <div class="gallery-grid">
-      <!-- 1st Item (CSS makes this span 2 columns) -->
+      <!-- 1st Item (Large) -->
       <div class="gallery-item reveal" onclick="openLightbox(this)">
-        <img src="images/bilding.jpg" alt="School Building">
+        <img src="images/l.jpg" alt="School Activity Large">
         <div class="gallery-hover">🔍</div>
       </div>
 
       <!-- 2nd Item -->
       <div class="gallery-item reveal" style="transition-delay:0.05s" onclick="openLightbox(this)">
-        <img src="images/new.jpg" alt="School News">
-        <div class="gallery-hover">🔍</div>
-      </div>
-
-      <!-- Added Item -->
-      <div class="gallery-item reveal" style="transition-delay:0.08s" onclick="openLightbox(this)">
-        <img src="images/news.jpg" alt="More School News">
+        <img src="images/bilding.jpg" alt="School Building">
         <div class="gallery-hover">🔍</div>
       </div>
 
       <!-- 3rd Item -->
       <div class="gallery-item reveal" style="transition-delay:0.1s" onclick="openLightbox(this)">
-        <img src="images/prime.jpg" alt="Prime Visit">
+        <img src="images/mbbs2.jpg" alt="MBBS Achievement">
         <div class="gallery-hover">🔍</div>
       </div>
 
-      <!-- 4th Item: Special Celebration Item -->
+      <!-- 4th Item -->
+      <div class="gallery-item reveal" style="transition-delay:0.15s" onclick="openLightbox(this)">
+        <img src="images/new.jpg" alt="School News">
+        <div class="gallery-hover">🔍</div>
+      </div>
+
+      <!-- 5th Item: Special Celebration (Large) -->
       <div class="gallery-item reveal"
-        style="transition-delay:0.15s; grid-column: span 2; border: 2px solid var(--gold-light); box-shadow: 0 0 20px rgba(212,175,55,0.3);"
+        style="transition-delay:0.2s; border: 2px solid var(--gold-light); box-shadow: 0 0 20px rgba(212,175,55,0.3);"
         onclick="openLightbox(this)">
         <div
-          style="position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, var(--gold-light), #b8860b); color: #000; padding: 6px 16px; border-radius: 24px; font-weight: bold; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 14px; letter-spacing: 1px;">
+          style="position: absolute; top: 15px; left: 15px; background: linear-gradient(135deg, var(--gold-light), #b8860b); color: #000; padding: 6px 16px; border-radius: 24px; font-weight: bold; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.5); font-size: 14px; letter-spacing: 1px;">
           🎉 CELEBRATION</div>
         <img src="images/congratulation.jpg" alt="Congratulations">
         <div class="gallery-hover">🔍</div>
       </div>
 
-      <!-- 5th Item (CSS makes this span 2 columns by default, overriding with span 1 so the layout doesn't break) -->
-      <div class="gallery-item reveal" style="transition-delay:0.2s; grid-column: span 1;" onclick="openLightbox(this)">
-        <img src="images/all.jpg" alt="All Events">
-        <div class="gallery-hover">🔍</div>
-      </div>
-
       <!-- 6th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.25s" onclick="openLightbox(this)">
-        <img src="images/modi.jpg" alt="National Recognition">
+        <img src="images/news.jpg" alt="School News Update">
         <div class="gallery-hover">🔍</div>
       </div>
 
       <!-- 7th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.3s" onclick="openLightbox(this)">
-        <img src="images/pre-science.jpg" alt="School Activities">
+        <img src="images/prime.jpg" alt="Prime Visit">
         <div class="gallery-hover">🔍</div>
       </div>
 
       <!-- 8th Item -->
       <div class="gallery-item reveal" style="transition-delay:0.35s" onclick="openLightbox(this)">
+        <img src="images/all.jpg" alt="All Events">
+        <div class="gallery-hover">🔍</div>
+      </div>
+
+      <!-- 9th Item -->
+      <div class="gallery-item reveal" style="transition-delay:0.4s" onclick="openLightbox(this)">
+        <img src="images/modi.jpg" alt="National Recognition">
+        <div class="gallery-hover">🔍</div>
+      </div>
+
+      <!-- 10th Item -->
+      <div class="gallery-item reveal" style="transition-delay:0.45s" onclick="openLightbox(this)">
+        <img src="images/pre-science.jpg" alt="School Activities">
+        <div class="gallery-hover">🔍</div>
+      </div>
+
+      <!-- 11th Item -->
+      <div class="gallery-item reveal" style="transition-delay:0.5s" onclick="openLightbox(this)">
         <img src="images/school.jpg" alt="School Logo">
         <div class="gallery-hover">🔍</div>
       </div>
     </div>
+
   </section>
   <div id="lightbox" onclick="closeLightbox()">
     <button onclick="sendToWhatsApp()">Submit</button>
@@ -3513,7 +4111,7 @@
     <div style="text-align:center;">
       <div class="section-tag reveal">📥 Apply Now</div>
       <h2 class="section-title reveal">Admission <span>Form</span></h2>
-      <p class="section-sub reveal" style="margin: 0 auto;">2025–26 Academic Year Admission Open — Fill the form below
+      <p class="section-sub reveal" style="margin: 0 auto;">2026–27 Academic Year Admission Open — Fill the form below
       </p>
     </div>
     <div class="admission-wrap reveal">
@@ -3683,7 +4281,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 The New Achiever Pre-Science School, Limdi. All Rights Reserved.</div>
+      <div class="footer-copy">© 2026 The New Achiever Pre-Science School, Limdi. All Rights Reserved. | Designed &amp; Developed by <span style="color: var(--blue-glow); font-weight:700;">Ritik Khanguda</span></div>
       <div class="footer-made">Made with <span>♥</span> for excellence in education</div>
     </div>
   </footer>
@@ -3753,14 +4351,9 @@
 
     // ── NOTICE BOARD ──
     const notices = [
-      { text: 'Admission Open 2025–26 — KG Balmandir to Std 12 Science. Contact: +91 94282 42460', date: 'April 2025', new: true },
-      { text: 'JEE/NEET Coaching Batch starts June 2025 — Limited Seats. Register Now!', date: 'April 2025', new: true },
-      { text: 'Annual Day Celebration — 15 May 2025. Parents are invited.', date: 'March 2025', new: false },
-      { text: '10th Board Result 2024: Best Score 88.74% — Congratulations to all students!', date: 'June 2024', new: false },
-      { text: 'Summer Vacation: 20 May to 10 June 2025. School reopens 11 June.', date: 'May 2025', new: true },
-      { text: 'Science Exhibition: 25 April 2025 — Students are requested to participate.', date: 'April 2025', new: true },
-      { text: 'Parent-Teacher Meeting: 5 May 2025, 9:00 AM to 1:00 PM', date: 'April 2025', new: false },
-      { text: 'Online Study Material available on school WhatsApp group. Contact office.', date: 'March 2025', new: false },
+      { text: 'Admission Open 2026–27 — KG Balmandir to Std 12 Science. Contact: +91 94282 42460', date: 'April 2026', new: true },
+      { text: '10th Board Result 2026: Best Score 100% — Congratulations to all students! 🎉', date: 'June 2026', new: true },
+      { text: '12th Board Result 2026: Best Score 100% — Outstanding Achievement! 🏆', date: 'June 2026', new: true },
     ];
     function buildNotices() {
       const list = document.getElementById('noticeList');
@@ -3907,6 +4500,8 @@
         });
     }
   </script>
+
+
 </body>
 
 </html>

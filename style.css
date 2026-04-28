@@ -1,489 +1,65 @@
- body {
-  margin:0;
-  font-family: Arial;
-  background:#0a1628;
-  color:white;
+/* ═══════════════════════════════════════════
+   NEW ACHIEVER PRE-SCIENCE SCHOOL - style.css
+   Clean version - no conflicts, no watermarks
+   ═══════════════════════════════════════════ */
+
+/* ─── BASE ─── */
+body {
+  margin: 0;
+  font-family: 'Mukta', Arial, sans-serif;
+  background: #0a1628;
+  color: white;
 }
 
-#intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  /* 🔥 SCHOOL BUILDING BACKGROUND */
-  background: url("images/building.jpg") no-repeat center;
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
-
-  z-index: 9999;
-}
-#intro::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: rgba(0, 0, 0, 0.6);
-}
-@keyframes zoomOut {
-  0%{opacity:1; transform:scale(1.2)}
-  80%{opacity:1;}
-  100%{opacity:0; transform:scale(1);}
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1 }
-  90% { opacity: 1 }   /* पहले 80 था */
-  100% { opacity: 0; }
-}
-
-
-.hero {
-  height: 100vh;
-  background: url("images/building.jpg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-
-section {
-  padding:50px;
-  text-align:center;
-}
-
-img {
-  width:80%;
-  border-radius:10px;
-  transition:0.5s;
-}
-
-img:hover {
-  transform:scale(1.05);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns: repeat(2,1fr);
-  gap:20px;
-}
 html {
   scroll-behavior: smooth;
 }
-.intro-image {
-  text-align: center;
-  margin: 25px 0;
+
+img {
+  border-radius: 10px;
+  transition: 0.5s;
 }
 
-.intro-image img {
-  width: 250px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-.nav-logo-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.nav-logo-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* ─── INTRO SECTION (Welcome Screen) ─── */
 #intro {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #020617, #0a1f44, #001f3f);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  /* 🔥 PRO MAX BACKGROUND */
-  background: linear-gradient(135deg, #020617, #0a1f44, #001f3f);
   overflow: hidden;
-  z-index: 9999;
-}
-#intro::before {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: #00c6ff;
-  border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.4;
-  top: 20%;
-  left: 30%;
-  animation: moveGlow 8s infinite alternate;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 
-#intro::after {
-  content: "";
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: #ff00cc;
-  border-radius: 50%;
-  filter: blur(150px);
-  opacity: 0.3;
-  bottom: 10%;
-  right: 20%;
-  animation: moveGlow 10s infinite alternate;
+#intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-@keyframes moveGlow {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(80px, -80px);
-  }
-}
+/* Dark overlay only - NO blur watermarks */
 #intro::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6); /* dark overlay */
-}
-.hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.45);
 }
-.intro-content {
-  position: relative;
-  z-index: 1;
-}
+
 .intro-content {
   position: relative;
   z-index: 2;
   padding: 40px;
   border-radius: 20px;
-
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
-}
-.intro-image img {
-  width: 220px;
-  border-radius: 20px;
-  border: 3px solid #4facfe;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  transition: all 0.4s ease;
-}
-
-.intro-image img:hover {
-  transform: scale(1.08);
-}
-body {
-  position: relative;
-  z-index: 1;
-
-  background-image: url("images/modi.jpg") !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-/* Watermark Background */
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-background: rgba(255,255,255,0.3);
-  z-index: -1;
-}
-
-/* Watermark Background */
-body {
-  background-image: url("images/modi.jpg") !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.85);
-  z-index: -1;
-}
-/* HEADER DESIGN */
-#navbar {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    padding: 10px 20px;
-}
-
-/* LOGO CIRCLE */
-.nav-logo-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #00c6ff;
-    box-shadow: 0 0 15px #00c6ff;
-}
-
-/* IMAGE FIT */
-.nav-logo-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #00c6ff;
-    box-shadow: 0 0 15px #00c6ff;
-}
-/* ANIMATION */
-@keyframes rotateLogo {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-/* HEADER DESIGN */
-#navbar {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    padding: 10px 20px;
-}
-
-/* LOGO CIRCLE */
-.nav-logo-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #00c6ff;
-    box-shadow: 0 0 15px #00c6ff;
-}
-
-/* IMAGE FIT */
-.nav-logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    animation: rotateLogo 6s linear infinite;
-}
-
-/* ANIMATION */
-@keyframes rotateLogo {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-/* LOGO CIRCLE FIX */
-.nav-logo-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #00c6ff;
-    box-shadow: 0 0 15px #00c6ff;
-}
-
-/* IMAGE + ROTATION */
-.nav-logo-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    animation: rotateLogo 8s linear infinite;
-}
-
-/* ANIMATION */
-@keyframes rotateLogo {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-/* HERO SECTION PREMIUM DESIGN */
-.hero {
-  min-height: 100vh;   /* height fixed नहीं, flexible */
-  width: 100%;
-
-  background: url("images/building.jpg") no-repeat center;
-  background-size: contain;   /* पूरा image दिखे */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-/* GLOW EFFECT BACKGROUND */
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #00c6ff55, transparent);
-    border-radius: 50%;
-    animation: pulseGlow 4s infinite;
-}
-
-/* CONTENT */
-.hero-content {
-  position: relative;
-  z-index: 2;
-
-  text-align: center;
-  margin-top: 0;   /* ❌ 200px जैसी value हटाओ */
-}
-
-/* LOGO */
-.hero-logo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #00c6ff;
-    box-shadow: 0 0 25px #00c6ff;
-}
-
-/* LOGO IMAGE */
-.hero {
-  height: 100vh;
-  background: url("images/building.jpg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-@keyframes zoomImg {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
-
-
-/* TEXT */
-.hero-text h1 {
-    color: white;
-    font-size: 36px;
-    letter-spacing: 3px;
-}
-
-.hero-text h2 {
-    color: #00c6ff;
-    font-size: 18px;
-    letter-spacing: 2px;
-}
-
-/* ROTATE ANIMATION */
-
-
-/* GLOW ANIMATION */
-@keyframes pulseGlow {
-    0% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.3); opacity: 0.7; }
-    100% { transform: scale(1); opacity: 0.4; }
-}
-/* HERO BACKGROUND IMAGE */
-.hero {
-  min-height: 100vh;
-  padding: 20px;
-
-  background: url("images/building.jpg") no-repeat center;
-  background-size: contain;
-}
-/* DARK OVERLAY (like pro design) */
-
-
-/* CENTER CONTENT */
-.hero-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-/* LOGO STYLE */
-.hero-logo {
-    width: 200px;
-    height: 200px;
-    margin: auto;
-    border-radius: 50%;
-
-    background: radial-gradient(circle, rgba(0,200,255,0.4), transparent);
-    box-shadow: 0 0 50px rgba(0,200,255,0.8);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* LOGO IMAGE */
-.hero-logo img {
-    width: 120;
-    height: 120px;
-    
-
-    animation: rotateLogo 8s linear infinite;
-}
-
-/* TEXT */
-.hero-center h1 {
-  font-size: clamp(22px, 4vw, 40px);
-  color: white;
-  letter-spacing: 2px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-.hero-center h2 {
-    color: #00d9ff;
-    letter-spacing: 2px;
-}
 
-/* ROTATION */
-@keyframes rotateLogo {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-/* Navbar logo rotate kare */
-.nav-logo-icon img {
-  animation: rotateLogo 6s linear infinite;
-}
-
-/* Animation */
-@keyframes rotateLogo {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Intro (welcome) me animation band */
-#intro img {
-  animation: none !important;
-}
-/* PERFECT CENTER WELCOME LOGO */
+/* ─── WELCOME LOGO (Star Orbit) ─── */
 .welcome-logo {
   position: absolute;
   top: 50%;
@@ -492,37 +68,186 @@ body::after {
   z-index: 1000;
 }
 
-.welcome-logo img {
-  width: 150px;  /* bigger */
-  height: 150px;
-  border-radius: 50%;
-  opacity: 1;
-  filter: brightness(1.3) contrast(1.2);
+.welcome-logo::before {
+  content: "⭐";
+  position: absolute;
+  font-size: 20px;
+  animation: starOrbit 5s linear infinite;
+  text-shadow: 0 0 10px #fff;
 }
+
+.welcome-logo::after {
+  content: "✨";
+  position: absolute;
+  font-size: 18px;
+  animation: starOrbit 3.5s linear infinite reverse;
+  text-shadow: 0 0 10px #fff;
+}
+
 .welcome-logo img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 30px #00c6ff, 0 0 60px rgba(0, 198, 255, 0.4);
+  /* No spin - stays still */
+  animation: none;
+}
 
-  box-shadow: 0 0 30px #00c6ff, 0 0 60px #00c6ff;
-  animation: spinLogo 6s linear infinite;
+/* Stop spin on all other intro images */
+#intro img:not(.welcome-logo img) {
+  animation: none !important;
+}
+
+/* ─── INTRO IMAGE (School photo in intro box) ─── */
+.intro-image {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.intro-image img {
+  width: 250px;
+  border-radius: 20px;
+  border: 4px solid #fff;
+  outline: 3px solid rgba(0, 198, 255, 0.35);
+  outline-offset: 3px;
+  box-shadow: 0 0 30px rgba(0, 198, 255, 0.5), 0 20px 50px rgba(0, 0, 0, 0.8);
+  transition: all 0.5s ease;
+  animation: pulseBorder 3s ease-in-out infinite alternate;
+}
+
+.intro-image img:hover {
+  transform: scale(1.05);
+}
+
+/* ─── NAVBAR LOGO ─── */
+.nav-logo-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: rotateLogo 8s linear infinite;
+}
+
+/* ─── HERO SECTION ─── */
+.hero {
+  min-height: 100vh;
+  background: url("images/building.jpg") no-repeat center;
+  background-size: contain;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero-center h1 {
+  font-size: clamp(22px, 4vw, 40px);
+  color: white;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.hero-center h2 {
+  color: #00d9ff;
+  letter-spacing: 2px;
+}
+
+/* ─── HERO LOGO ─── */
+.hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #00c6ff;
+  box-shadow: 0 0 25px #00c6ff;
+}
+
+.hero-logo img {
+  width: 100%;
+  height: 100%;
+  animation: rotateLogo 8s linear infinite;
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 50px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes rotateLogo {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 @keyframes spinLogo {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
+
+@keyframes starOrbit {
+  from { transform: rotate(0deg) translateX(110px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+}
+
+@keyframes pulseBorder {
+  0%   { box-shadow: 0 0 20px rgba(0, 198, 255, 0.4); border-color: #fff; }
+  100% { box-shadow: 0 0 55px rgba(0, 198, 255, 0.85); border-color: #00c6ff; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.3); }
+}
+
+@keyframes zoomOut {
+  0%   { opacity: 1; transform: scale(1.2); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ─── INTRO TEXT ─── */
 #intro h1 {
   font-size: 40px;
   color: #ffd700;
   letter-spacing: 3px;
- 
 }
 
 #intro p {
   color: #ccc;
   font-size: 16px;
 }
+
+/* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .hero-logo img {
     width: 90px;
@@ -532,4 +257,113 @@ body::after {
   .hero-center h1 {
     font-size: 22px;
   }
+
+  .intro-content {
+    padding: 24px 16px;
+    margin: 0 16px;
+  }
+
+  .intro-image img {
+    width: 200px;
+  }
+
+  .welcome-logo img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* ─── SCHOOL INTRO & STUDENT REVIEWS ─── */
+.review-card:hover {
+  transform: translateY(-15px) !important;
+  border-color: var(--blue-glow) !important;
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.3) !important;
+  background: rgba(37, 99, 235, 0.05) !important;
+}
+.review-card:hover .play-btn-small {
+  transform: translate(-50%, -50%) scale(1.15) !important;
+  background: var(--gold) !important;
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.9) !important;
+}
+.review-card:hover .review-video-wrap > div:first-child {
+  transform: scale(1.1);
+}
+.review-video-wrap > div:first-child {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.video-play-btn {
+  transition: all 0.3s ease;
+}
+.video-container:hover .video-play-btn {
+  transform: scale(1.1);
+  background: var(--blue-light) !important;
+  box-shadow: 0 0 50px rgba(96, 165, 250, 1) !important;
+}
+.video-container img, .video-container div {
+  transition: all 0.7s ease;
+}
+.video-container:hover .video-bg-img {
+  transform: scale(1.05);
+  filter: brightness(0.7) !important;
+}
+
+/* ── INTENSE HIGHLIGHT & ANIMATION ── */
+@keyframes intenseBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.colorful-bg {
+  background: linear-gradient(-45deg, #0a1628, #1e3a8a, #4338ca, #3b0764, #1e1b4b, #081020) !important;
+  background-size: 400% 400% !important;
+  animation: intenseBg 15s ease infinite !important;
+  position: relative;
+  z-index: 1;
+}
+
+.glow-box {
+  position: relative;
+}
+
+.glow-box::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(45deg, #ff007f, #ff7300, #fcd34d, #00ffd5, #3b82f6, #7a00ff, #ff00c8, #ff007f);
+  border-radius: inherit;
+  z-index: -1;
+  filter: blur(15px);
+  background-size: 400%;
+  animation: glowingEffect 20s linear infinite;
+  opacity: 0.85;
+}
+
+.glow-box-small::before {
+  filter: blur(8px);
+  inset: -2px;
+}
+
+@keyframes glowingEffect {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.float-anim {
+  animation: floatAnim 5s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.color-text {
+  background: linear-gradient(to right, #60a5fa, #a78bfa, #f472b6, #fcd34d, #60a5fa) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  animation: intenseBg 4s ease infinite !important;
+  background-size: 300% 300% !important;
 }
